@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0E0D0B" />
+<title>HenkanCX — Reimagining Customer Experience</title>
+<meta name="description" content="HenkanCX está rediseñando algo nuevo. AI-powered customer experience, predictive analytics y plataformas SaaS. HenkanCX is reimagining the way businesses connect with their customers." />
+<meta property="og:title" content="HenkanCX — Coming Soon" />
+<meta property="og:description" content="Reimagining customer experience. Algo nuevo está en camino." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.henkancx.com/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230E0D0B'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='62' font-style='italic' font-weight='600' fill='%23FF6B35' text-anchor='middle'%3Eh%3C/text%3E%3C/svg%3E">
+
+<style>
+  /* ============ TOKENS ============ */
+  :root {
+    --bg: #0E0D0B;
+    --bg-soft: #15140F;
+    --ink: #F4EFE6;
+    --ink-dim: #A39E94;
+    --ink-faint: #5C584F;
+    --accent: #FF6B35;
+    --accent-warm: #FFB088;
+    --line: rgba(244, 239, 230, 0.08);
+    --line-strong: rgba(244, 239, 230, 0.18);
+
+    --display: 'Fraunces', 'Times New Roman', Georgia, serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  /* ============ RESET ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    font-feature-settings: "ss01", "ss02";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: var(--grain);
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: overlay;
+  }
+
+  /* Vignette */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.45) 100%);
+    pointer-events: none;
+    z-index: 99;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { background: none; border: none; cursor: pointer; color: inherit; font: inherit; }
+
+  /* ============ LAYOUT ============ */
+  .shell {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(20px, 3vw, 40px) clamp(20px, 4vw, 56px);
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(18px, 1.6vw, 22px);
+    letter-spacing: -0.01em;
+  }
+  .brand-mark {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 600;
+  }
+  .brand-sep {
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    font-size: 0.7em;
+    transform: translateY(-2px);
+  }
+
+  .top-meta {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 32px);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-dim);
+  }
+
+  .lang-toggle {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+  }
+  .lang-toggle button {
+    padding: 6px 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    transition: color 0.2s ease;
+    text-transform: uppercase;
+  }
+  .lang-toggle button:hover { color: var(--ink); }
+  .lang-toggle button.active { color: var(--accent); }
+  .lang-toggle .divider { color: var(--ink-faint); }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(255, 107, 53, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
+  }
+
+  /* ============ MAIN ============ */
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(48px, 8vh, 96px);
+    padding: clamp(56px, 12vh, 140px) 0 clamp(40px, 8vh, 80px);
+    align-content: center;
+  }
+
+  .hero {
+    display: grid;
+    gap: 48px;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(48px, 11vw, 168px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+  }
+  .hero-title .word-rotate {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    vertical-align: bottom;
+    height: 1em;
+    line-height: 0.92;
+  }
+  .hero-title .word-rotate span {
+    display: block;
+    animation: wordSlide 9s infinite;
+  }
+  @keyframes wordSlide {
+    0%, 28%   { transform: translateY(0); }
+    33%, 61%  { transform: translateY(-1em); }
+    66%, 94%  { transform: translateY(-2em); }
+    100%      { transform: translateY(-3em); }
+  }
+
+  .hero-sub {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(16px, 1.6vw, 20px);
+    line-height: 1.55;
+    color: var(--ink-dim);
+    max-width: 56ch;
+    letter-spacing: -0.005em;
+  }
+
+  /* ============ INFO STRIP ============ */
+  .info-strip {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .info-block {
+    grid-column: span 4;
+  }
+  .info-block .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+  }
+  .info-block .value {
+    font-family: var(--display);
+    font-size: clamp(15px, 1.3vw, 17px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .info-block .value a {
+    border-bottom: 1px solid var(--line-strong);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .info-block .value a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* Progress meter */
+  .progress-block {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .progress-bar {
+    height: 1px;
+    background: var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    animation: fill 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.6s;
+    box-shadow: 0 0 12px rgba(255, 107, 53, 0.4);
+  }
+  @keyframes fill {
+    to { width: 62%; }
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  footer .copy {
+    line-height: 1.7;
+  }
+  footer .social {
+    display: flex;
+    gap: 24px;
+  }
+  footer .social a {
+    transition: color 0.2s ease;
+  }
+  footer .social a:hover { color: var(--accent); }
+
+  /* ============ DECORATIVE MARKS ============ */
+  .corner-mark {
+    position: fixed;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    z-index: 2;
+    pointer-events: none;
+    text-transform: uppercase;
+  }
+  .corner-mark.bl {
+    bottom: 24px;
+    left: 24px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .corner-mark.br {
+    bottom: 24px;
+    right: 24px;
+    writing-mode: vertical-rl;
+  }
+
+  /* ============ SCROLL CUE / TIMESTAMP ============ */
+  .live-clock {
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+
+  /* ============ FADE-IN STAGGER ============ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.9s cubic-bezier(0.2, 0.65, 0.3, 1) forwards;
+  }
+  .fade-up.d1 { animation-delay: 0.1s; }
+  .fade-up.d2 { animation-delay: 0.25s; }
+  .fade-up.d3 { animation-delay: 0.45s; }
+  .fade-up.d4 { animation-delay: 0.7s; }
+  .fade-up.d5 { animation-delay: 0.95s; }
+  .fade-up.d6 { animation-delay: 1.2s; }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ I18N ============ */
+  [data-en], [data-es] { display: none; }
+  html[lang="en"] [data-en] { display: inline; }
+  html[lang="es"] [data-es] { display: inline; }
+  html[lang="en"] [data-en].block,
+  html[lang="es"] [data-es].block { display: block; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 720px) {
+    .info-block { grid-column: span 12; }
+    footer { grid-template-columns: 1fr; }
+    footer .social { justify-content: flex-start; }
+    .corner-mark { display: none; }
+    .top-meta .status { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title .word-rotate span { animation: none; }
+    .progress-fill { animation: none; width: 62%; }
+    .status-dot { animation: none; }
+    .fade-up { opacity: 1; transform: none; animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="corner-mark bl">
+  <span data-es>Panamá · 09°N 79°W</span>
+  <span data-en>Panama · 09°N 79°W</span>
+</div>
+<div class="corner-mark br live-clock" id="clock">—</div>
+
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="fade-up">
+    <div class="brand">
+      <span>henkan</span>
+      <span class="brand-sep">/</span>
+      <span class="brand-mark"><em>cx</em></span>
+    </div>
+
+    <div class="top-meta">
+      <span class="status">
+        <span class="status-dot"></span>
+        <span data-en>In progress</span>
+        <span data-es>En progreso</span>
+      </span>
+      <div class="lang-toggle">
+        <button data-lang="es" class="active">ES</button>
+        <span class="divider">·</span>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <section class="hero">
+      <div class="eyebrow fade-up d1">
+        <span data-en>v2.0 · Site under reconstruction</span>
+        <span data-es>v2.0 · Sitio en reconstrucción</span>
+      </div>
+
+      <h1 class="hero-title fade-up d2">
+        <span data-es>Reimaginando<br>la <em>experiencia</em><br>del cliente.</span>
+        <span data-en>Reimagining<br>the customer<br><em>experience.</em></span>
+      </h1>
+
+      <p class="hero-sub fade-up d3">
+        <span data-es>
+          Estamos construyendo algo nuevo. Una experiencia digital que refleje cómo trabajamos: con inteligencia artificial aplicada, criterio y atención al detalle.
+        </span>
+        <span data-en>
+          We're building something new. A digital experience that mirrors how we actually work: with applied AI, judgment, and an obsession for detail.
+        </span>
+      </p>
+    </section>
+
+    <!-- ============ INFO STRIP ============ -->
+    <section class="info-strip">
+      <div class="info-block fade-up d4">
+        <div class="label">
+          <span data-en>Reach us</span>
+          <span data-es>Contáctanos</span>
+        </div>
+        <div class="value">
+          <a href="mailto:info@henkancx.com">info@henkancx.com</a>
+        </div>
+      </div>
+
+      <div class="info-block fade-up d4">
+        <div class="label">
+          <span data-en>Direct line</span>
+          <span data-es>Línea directa</span>
+        </div>
+        <div class="value">
+          <a href="https://wa.me/50764671392" target="_blank" rel="noopener">+507 6467 1392</a>
+        </div>
+      </div>
+
+      <div class="info-block fade-up d4">
+        <div class="label">
+          <span data-en>Headquarters</span>
+          <span data-es>Sede</span>
+        </div>
+        <div class="value">
+          <span data-en>Panama City, Panama</span>
+          <span data-es>Ciudad de Panamá, Panamá</span>
+        </div>
+      </div>
+
+      <div class="progress-block fade-up d5">
+        <div class="progress-meta">
+          <span>
+            <span data-es>Progreso del rediseño</span>
+            <span data-en>Redesign progress</span>
+          </span>
+          <span id="pct">62%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="fade-up d6">
+    <div class="copy">
+      <div>© 2026 HenkanCX</div>
+      <div>
+        <span data-en>AI-powered customer experience · Latin America</span>
+        <span data-es>Experiencia del cliente con IA · América Latina</span>
+      </div>
+    </div>
+    <div class="social">
+      <a href="https://linkedin.com/company/henkancx" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://instagram.com/henkancx" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/50764671392" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // ============ LANGUAGE TOGGLE ============
+  (function() {
+    const html = document.documentElement;
+    const buttons = document.querySelectorAll('.lang-toggle button');
+    const stored = localStorage.getItem('henkancx_lang');
+    const initial = stored || (navigator.language?.startsWith('en') ? 'en' : 'es');
+    setLang(initial);
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+
+    function setLang(lang) {
+      html.lang = lang;
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      localStorage.setItem('henkancx_lang', lang);
+      document.title = lang === 'es'
+        ? 'HenkanCX — Reimaginando la experiencia del cliente'
+        : 'HenkanCX — Reimagining customer experience';
+    }
+  })();
+
+  // ============ LIVE CLOCK (Panama time) ============
+  (function() {
+    const el = document.getElementById('clock');
+    function tick() {
+      const now = new Date();
+      const opts = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'America/Panama' };
+      const t = new Intl.DateTimeFormat('en-GB', opts).format(now);
+      el.textContent = `PTY ${t}`;
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // ============ PROGRESS COUNTER ============
+  (function() {
+    const target = 62;
+    const el = document.getElementById('pct');
+    let current = 0;
+    const start = performance.now();
+    const dur = 2400;
+    const delay = 600;
+    requestAnimationFrame(function step(now) {
+      const elapsed = now - start - delay;
+      if (elapsed < 0) {
+        el.textContent = '0%';
+        return requestAnimationFrame(step);
+      }
+      const t = Math.min(elapsed / dur, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      current = Math.round(eased * target);
+      el.textContent = current + '%';
+      if (t < 1) requestAnimationFrame(step);
+    });
+  })();
+</script>
+
+</body>
+</html>
