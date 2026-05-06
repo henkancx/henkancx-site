@@ -1,590 +1,2081 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#0E0D0B" />
-<title>HenkanCX — Reimagining Customer Experience</title>
-<meta name="description" content="HenkanCX está rediseñando algo nuevo. AI-powered customer experience, predictive analytics y plataformas SaaS. HenkanCX is reimagining the way businesses connect with their customers." />
-<meta property="og:title" content="HenkanCX — Coming Soon" />
-<meta property="og:description" content="Reimagining customer experience. Algo nuevo está en camino." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.henkancx.com/" />
-
+<meta charset="utf-8">
+<title>HenkanCX — Transformamos la experiencia del cliente desde el día 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Soluciones de IA y automatización para transformar el customer experience en Latinoamérica. Inspecciones inteligentes, contact center con IA, chatbots de WhatsApp y más.">
+<meta name="theme-color" content="#0D1B2A">
+<meta property="og:title" content="HenkanCX — Transformamos la CX desde el día 1">
+<meta property="og:description" content="Soluciones de IA y automatización para LATAM. Inspecciones, contact center, chatbots, gestión inteligente.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://henkancx.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230E0D0B'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='62' font-style='italic' font-weight='600' fill='%23FF6B35' text-anchor='middle'%3Eh%3C/text%3E%3C/svg%3E">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ============ TOKENS ============ */
-  :root {
-    --bg: #0E0D0B;
-    --bg-soft: #15140F;
-    --ink: #F4EFE6;
-    --ink-dim: #A39E94;
-    --ink-faint: #5C584F;
-    --accent: #FF6B35;
-    --accent-warm: #FFB088;
-    --line: rgba(244, 239, 230, 0.08);
-    --line-strong: rgba(244, 239, 230, 0.18);
+:root {
+  --navy: #0D1B2A;
+  --navy-2: #142437;
+  --navy-3: #1c3050;
+  --navy-deep: #060d18;
+  --magenta: #CB6CE6;
+  --purple: #833AE0;
+  --slate: #4A4E69;
+  --slate-2: #6b7089;
+  --slate-3: #9296a8;
+  --cloud: #F5F6F8;
+  --paper: #FBFAF7;
+  --paper-warm: #F2F1EE;
+  --line: rgba(13, 27, 42, 0.08);
+  --line-strong: rgba(13, 27, 42, 0.16);
+  --line-dark: rgba(255, 255, 255, 0.10);
+  --line-dark-strong: rgba(255, 255, 255, 0.18);
+  --gradient: linear-gradient(135deg, #833AE0 0%, #CB6CE6 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(131,58,224,0.12) 0%, rgba(203,108,230,0.12) 100%);
+}
 
-    --display: 'Fraunces', 'Times New Roman', Georgia, serif;
-    --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--navy);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+  overflow-x: hidden;
+}
 
-    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  }
+/* ===== Universal helpers ===== */
+.section-eyebrow {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 16px;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.section-eyebrow::before {
+  content: ''; width: 24px; height: 1px;
+  background: var(--magenta);
+}
+.dark .section-eyebrow { color: var(--magenta); }
+.light .section-eyebrow { color: var(--purple); }
+.light .section-eyebrow::before { background: var(--purple); }
 
-  /* ============ RESET ============ */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--mono);
-    font-weight: 400;
-    line-height: 1.5;
-    overflow-x: hidden;
-    min-height: 100vh;
-    position: relative;
-    font-feature-settings: "ss01", "ss02";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(40px, 5.5vw, 84px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: white;
+}
+.light .section-title { color: var(--navy); }
+.section-title .accent {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
-  /* Grain overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: var(--grain);
-    opacity: 0.06;
-    pointer-events: none;
-    z-index: 100;
-    mix-blend-mode: overlay;
-  }
+.section-sub {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.65);
+  max-width: 620px;
+  margin-top: 24px;
+}
+.light .section-sub { color: var(--slate); }
 
-  /* Vignette */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.45) 100%);
-    pointer-events: none;
-    z-index: 99;
-  }
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: inherit;
+  border: 0; cursor: pointer;
+  font-size: 14px; font-weight: 500;
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all .25s ease;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+}
+.btn-large { font-size: 15px; padding: 14px 26px; }
+.btn-mag {
+  background: var(--gradient); color: white;
+  box-shadow: 0 4px 30px rgba(131, 58, 224, 0.4);
+}
+.btn-mag:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(131, 58, 224, 0.55); }
+.btn-light { background: white; color: var(--navy); }
+.btn-light:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.btn-outline-light { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.25); }
+.btn-outline-light:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); }
+.btn-outline-dark { background: transparent; color: var(--navy); border: 1px solid var(--line-strong); }
+.btn-outline-dark:hover { background: rgba(13,27,42,0.04); }
 
-  a { color: inherit; text-decoration: none; }
-  button { background: none; border: none; cursor: pointer; color: inherit; font: inherit; }
+/* Handwritten utility */
+.hand {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-style: normal;
+}
 
-  /* ============ LAYOUT ============ */
-  .shell {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: clamp(20px, 3vw, 40px) clamp(20px, 4vw, 56px);
-  }
+/* ===== NAV ===== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(13, 27, 42, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-brand img {
+  height: 42px; width: auto;
+  filter: brightness(0) invert(1);
+}
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 14px; font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: color .2s;
+}
+.nav-links a:hover { color: white; }
+.nav-actions { display: flex; gap: 12px; align-items: center; }
+.lang-toggle {
+  display: flex; gap: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  padding: 3px;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+.lang-toggle button {
+  background: transparent; border: 0;
+  font-family: inherit;
+  font-size: 11px; font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.04em;
+  transition: all .2s;
+}
+.lang-toggle button.active { background: white; color: var(--navy); }
 
-  /* ============ HEADER ============ */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--line);
-  }
+/* PTY clock in nav */
+.nav-clock {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding-right: 14px;
+  border-right: 1px solid rgba(255,255,255,0.10);
+}
+.nav-clock::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--magenta);
+  box-shadow: 0 0 8px var(--magenta);
+  animation: livePulse 2s ease-in-out infinite;
+}
+@keyframes livePulse {
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
 
-  .brand {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: clamp(18px, 1.6vw, 22px);
-    letter-spacing: -0.01em;
-  }
-  .brand-mark {
-    color: var(--accent);
-    font-style: italic;
-    font-weight: 600;
-  }
-  .brand-sep {
-    color: var(--ink-faint);
-    font-family: var(--mono);
-    font-size: 0.7em;
-    transform: translateY(-2px);
-  }
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  padding: 180px 32px 120px;
+  overflow: hidden;
+  background: var(--navy);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -100px;
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(131,58,224,0.35), transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -300px; left: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(203,108,230,0.20), transparent 60%);
+  pointer-events: none;
+}
+.hero-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+.hero-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.02em;
+  margin-bottom: 36px;
+  animation: rise .8s cubic-bezier(.16,1,.3,1) both;
+}
+.hero-eyebrow .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--magenta);
+  box-shadow: 0 0 0 4px rgba(203,108,230,0.25);
+  animation: livePulse 2s ease-in-out infinite;
+}
 
-  .top-meta {
-    display: flex;
-    align-items: center;
-    gap: clamp(16px, 3vw, 32px);
-    font-family: var(--mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--ink-dim);
-  }
+h1.hero-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(52px, 7vw, 124px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  color: white;
+  margin-bottom: 32px;
+}
+h1.hero-title span { display: block; animation: rise .9s cubic-bezier(.16,1,.3,1) both; }
+h1.hero-title span:nth-child(1) { animation-delay: .05s; }
+h1.hero-title span:nth-child(2) { animation-delay: .15s; }
+h1.hero-title span:nth-child(3) { animation-delay: .25s; }
+h1.hero-title .accent {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-style: italic;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.025em;
+}
 
-  .lang-toggle {
-    display: flex;
-    gap: 2px;
-    align-items: center;
-  }
-  .lang-toggle button {
-    padding: 6px 10px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--ink-faint);
-    transition: color 0.2s ease;
-    text-transform: uppercase;
-  }
-  .lang-toggle button:hover { color: var(--ink); }
-  .lang-toggle button.active { color: var(--accent); }
-  .lang-toggle .divider { color: var(--ink-faint); }
+.hero-sub {
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.7);
+  max-width: 540px;
+  margin-bottom: 40px;
+  animation: rise .8s .35s cubic-bezier(.16,1,.3,1) both;
+}
+.hero-cta {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  animation: rise .8s .45s cubic-bezier(.16,1,.3,1) both;
+}
 
-  .status {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 0 var(--accent);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.6); }
-    70% { box-shadow: 0 0 0 8px rgba(255, 107, 53, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
-  }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
 
-  /* ============ MAIN ============ */
-  main {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(48px, 8vh, 96px);
-    padding: clamp(56px, 12vh, 140px) 0 clamp(40px, 8vh, 80px);
-    align-content: center;
-  }
+/* hero visual side */
+.hero-visual {
+  position: relative;
+  height: 520px;
+  animation: rise 1s .25s cubic-bezier(.16,1,.3,1) both;
+}
+.hero-art-card {
+  position: absolute;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--navy-2);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+}
+.hero-art-1 {
+  top: 0; right: 60px;
+  width: 320px; height: 380px;
+  transform: rotate(2deg);
+  background: linear-gradient(135deg, var(--purple), var(--magenta));
+}
+.hero-art-2 {
+  bottom: 0; left: 0;
+  width: 280px; height: 220px;
+  transform: rotate(-3deg);
+  background: linear-gradient(135deg, var(--navy-3), var(--navy-2));
+}
+.hero-art-3 {
+  top: 200px; right: 0;
+  width: 220px; height: 200px;
+  transform: rotate(-1deg);
+  background: var(--cloud);
+}
 
-  .hero {
-    display: grid;
-    gap: 48px;
-  }
+.hero-art-1::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 380' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3CradialGradient id='gh' cx='30%25' cy='30%25' r='60%25'%3E%3Cstop offset='0%25' stop-color='white' stop-opacity='0.4'/%3E%3Cstop offset='100%25' stop-color='white' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23gh)'/%3E%3C/svg%3E");
+}
 
-  .eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-  .eyebrow::before {
-    content: '';
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-  }
+/* hero person silhouette in art-1 */
+.hero-person-svg {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 2;
+}
 
-  .hero-title {
-    font-family: var(--display);
-    font-weight: 300;
-    font-size: clamp(48px, 11vw, 168px);
-    line-height: 0.92;
-    letter-spacing: -0.035em;
-    color: var(--ink);
-    font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
-  }
-  .hero-title em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
-  }
-  .hero-title .word-rotate {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    vertical-align: bottom;
-    height: 1em;
-    line-height: 0.92;
-  }
-  .hero-title .word-rotate span {
-    display: block;
-    animation: wordSlide 9s infinite;
-  }
-  @keyframes wordSlide {
-    0%, 28%   { transform: translateY(0); }
-    33%, 61%  { transform: translateY(-1em); }
-    66%, 94%  { transform: translateY(-2em); }
-    100%      { transform: translateY(-3em); }
-  }
+/* hero data card content */
+.hero-art-2 .data-line {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.55);
+}
+.hero-art-2 .data-content {
+  padding: 18px 22px;
+  display: flex; flex-direction: column;
+  height: 100%;
+}
+.hero-art-2 .data-big {
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 12px 0 6px;
+  background: linear-gradient(180deg, white 0%, rgba(255,255,255,0.5) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: -0.04em;
+}
+.hero-art-2 .data-spark {
+  margin-top: auto;
+  display: flex; align-items: end; gap: 4px;
+  height: 40px;
+}
+.hero-art-2 .data-spark div {
+  flex: 1;
+  background: var(--gradient);
+  border-radius: 2px;
+  opacity: 0.85;
+}
 
-  .hero-sub {
-    font-family: var(--display);
-    font-weight: 300;
-    font-size: clamp(16px, 1.6vw, 20px);
-    line-height: 1.55;
-    color: var(--ink-dim);
-    max-width: 56ch;
-    letter-spacing: -0.005em;
-  }
+/* hero quote card content */
+.hero-art-3 .quote-content {
+  padding: 22px;
+  height: 100%;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.hero-art-3 .quote-text {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+.hero-art-3 .quote-text::before { content: '"'; font-size: 32px; color: var(--magenta); line-height: 0; vertical-align: -8px; margin-right: 2px; }
+.hero-art-3 .quote-attr {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate-2);
+}
 
-  /* ============ INFO STRIP ============ */
-  .info-strip {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-    padding-top: 40px;
-    border-top: 1px solid var(--line);
-  }
+/* Hand-drawn note */
+.hero-note {
+  position: absolute;
+  bottom: -30px; left: 0;
+  z-index: 5;
+  display: flex; align-items: center; gap: 12px;
+  animation: rise .8s .8s cubic-bezier(.16,1,.3,1) both;
+}
+.hero-note .arrow-svg {
+  width: 100px; height: 60px;
+  flex-shrink: 0;
+  color: var(--magenta);
+}
+.hero-note .arrow-svg path {
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawArrow 1.6s 1s forwards ease-out;
+}
+@keyframes drawArrow {
+  to { stroke-dashoffset: 0; }
+}
+.hero-note .note-text {
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.2;
+  max-width: 220px;
+  transform: rotate(-2deg);
+}
+.hero-note .note-text b { color: var(--magenta); font-weight: 600; }
 
-  .info-block {
-    grid-column: span 4;
-  }
-  .info-block .label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 12px;
-  }
-  .info-block .value {
-    font-family: var(--display);
-    font-size: clamp(15px, 1.3vw, 17px);
-    font-weight: 400;
-    line-height: 1.4;
-    color: var(--ink);
-  }
-  .info-block .value a {
-    border-bottom: 1px solid var(--line-strong);
-    transition: border-color 0.2s ease, color 0.2s ease;
-  }
-  .info-block .value a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
+/* ===== MANIFESTO ===== */
+.manifesto {
+  background: var(--paper-warm);
+  color: var(--navy);
+  padding: 140px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.manifesto-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.manifesto-eyebrow {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 18px;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.manifesto-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--purple); }
+.manifesto-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(36px, 4.4vw, 64px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-bottom: 32px;
+  color: var(--navy);
+}
+.manifesto-title .accent {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.manifesto-body p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--slate);
+  margin-bottom: 22px;
+  max-width: 620px;
+}
+.manifesto-body p strong { color: var(--navy); font-weight: 600; }
 
-  /* Progress meter */
-  .progress-block {
-    grid-column: span 12;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 8px;
-  }
-  .progress-meta {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-  .progress-bar {
-    height: 1px;
-    background: var(--line);
-    position: relative;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: var(--accent);
-    width: 0%;
-    animation: fill 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.6s;
-    box-shadow: 0 0 12px rgba(255, 107, 53, 0.4);
-  }
-  @keyframes fill {
-    to { width: 62%; }
-  }
+.founder-card {
+  background: white;
+  border-radius: 22px;
+  padding: 36px 32px;
+  box-shadow: 0 30px 80px -30px rgba(13,27,42,0.20), 0 4px 14px rgba(13,27,42,0.04);
+  border: 1px solid var(--line);
+  position: relative;
+  margin-top: 60px;
+}
+.founder-card::before {
+  content: '"';
+  position: absolute;
+  top: -20px; left: 24px;
+  font-family: 'Instrument Serif', serif;
+  font-size: 120px;
+  color: var(--magenta);
+  line-height: 1;
+}
+.founder-quote {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+.founder-attr {
+  display: flex; align-items: center; gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.founder-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+.founder-info .name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+.founder-info .role {
+  font-size: 12px;
+  color: var(--slate-2);
+  margin-top: 2px;
+}
+.founder-signature {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: var(--purple);
+  font-weight: 600;
+  margin-top: 18px;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
 
-  /* ============ FOOTER ============ */
-  footer {
-    padding-top: 32px;
-    border-top: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 24px;
-    align-items: end;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  footer .copy {
-    line-height: 1.7;
-  }
-  footer .social {
-    display: flex;
-    gap: 24px;
-  }
-  footer .social a {
-    transition: color 0.2s ease;
-  }
-  footer .social a:hover { color: var(--accent); }
+/* ===== SOLUTIONS (dark) ===== */
+.solutions-section {
+  padding: 140px 32px;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.solutions-section::before {
+  content: '';
+  position: absolute;
+  top: 100px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(131,58,224,0.15), transparent 60%);
+  pointer-events: none;
+}
+.solutions-inner { max-width: 1480px; margin: 0 auto; position: relative; }
+.solutions-head {
+  display: flex; justify-content: space-between; align-items: end;
+  gap: 48px;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+}
+.solutions-head .left { max-width: 760px; }
 
-  /* ============ DECORATIVE MARKS ============ */
-  .corner-mark {
-    position: fixed;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    color: var(--ink-faint);
-    z-index: 2;
-    pointer-events: none;
-    text-transform: uppercase;
-  }
-  .corner-mark.bl {
-    bottom: 24px;
-    left: 24px;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-  }
-  .corner-mark.br {
-    bottom: 24px;
-    right: 24px;
-    writing-mode: vertical-rl;
-  }
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+}
+.solution-card {
+  position: relative;
+  background: var(--navy-2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 32px 28px;
+  text-decoration: none;
+  color: white;
+  transition: all .35s cubic-bezier(.16,1,.3,1);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.solution-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(203,108,230,0.3);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5), 0 0 0 1px rgba(203,108,230,0.15);
+}
+.solution-card:hover .sol-arrow { transform: translate(2px, -2px); }
+.solution-card:hover .sol-bg-art { transform: scale(1.08); opacity: 1; }
 
-  /* ============ SCROLL CUE / TIMESTAMP ============ */
-  .live-clock {
-    font-variant-numeric: tabular-nums;
-    color: var(--ink);
-  }
+.solution-card.span-2 { grid-column: span 2; }
+.solution-card.span-3 { grid-column: span 3; }
+.solution-card.span-4 { grid-column: span 4; }
 
-  /* ============ FADE-IN STAGGER ============ */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.9s cubic-bezier(0.2, 0.65, 0.3, 1) forwards;
-  }
-  .fade-up.d1 { animation-delay: 0.1s; }
-  .fade-up.d2 { animation-delay: 0.25s; }
-  .fade-up.d3 { animation-delay: 0.45s; }
-  .fade-up.d4 { animation-delay: 0.7s; }
-  .fade-up.d5 { animation-delay: 0.95s; }
-  .fade-up.d6 { animation-delay: 1.2s; }
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
+.sol-bg-art {
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 240px; height: 240px;
+  opacity: 0.5;
+  transition: all .6s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+}
 
-  /* ============ I18N ============ */
-  [data-en], [data-es] { display: none; }
-  html[lang="en"] [data-en] { display: inline; }
-  html[lang="es"] [data-es] { display: inline; }
-  html[lang="en"] [data-en].block,
-  html[lang="es"] [data-es].block { display: block; }
+.sol-tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 14px;
+}
+.sol-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.sol-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+.sol-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  z-index: 1;
+}
+.sol-metric {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+.sol-metric b { color: white; font-weight: 600; }
+.sol-arrow {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  transition: transform .25s ease;
+}
 
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 720px) {
-    .info-block { grid-column: span 12; }
-    footer { grid-template-columns: 1fr; }
-    footer .social { justify-content: flex-start; }
-    .corner-mark { display: none; }
-    .top-meta .status { display: none; }
-  }
+/* ===== TESTIMONIALS (light, editorial) ===== */
+.testimonials {
+  background: var(--paper);
+  color: var(--navy);
+  padding: 160px 32px;
+  position: relative;
+}
+.testimonials-inner { max-width: 1480px; margin: 0 auto; }
+.testimonials-head { margin-bottom: 80px; max-width: 920px; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .hero-title .word-rotate span { animation: none; }
-    .progress-fill { animation: none; width: 62%; }
-    .status-dot { animation: none; }
-    .fade-up { opacity: 1; transform: none; animation: none; }
-  }
+.tm-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.tm-card {
+  position: relative;
+}
+.tm-card.large {
+  grid-row: span 2;
+}
+.tm-quote {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+  margin-bottom: 28px;
+  position: relative;
+}
+.tm-card.large .tm-quote {
+  font-size: clamp(28px, 3.4vw, 48px);
+  line-height: 1.15;
+  margin-bottom: 36px;
+}
+.tm-card:not(.large) .tm-quote {
+  font-size: 22px;
+  line-height: 1.35;
+}
+.tm-quote::before {
+  content: '“';
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.6em;
+  background: var(--gradient);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 0;
+  display: inline-block;
+  vertical-align: -0.3em;
+  margin-right: 0.05em;
+  font-style: normal;
+}
+.tm-attr {
+  display: flex; align-items: center; gap: 14px;
+}
+.tm-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.tm-attr .role {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -0.005em;
+}
+.tm-attr .sector {
+  font-size: 12px;
+  color: var(--slate-2);
+  margin-top: 2px;
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0.04em;
+}
+.tm-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 32px 0;
+}
+
+/* ===== INDUSTRIES MARQUEE (dark slim) ===== */
+.industries {
+  background: var(--navy-deep);
+  color: white;
+  padding: 60px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.industries-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 28px;
+}
+.industries-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.industries-label b { color: white; font-weight: 600; }
+.industries-marquee {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.industries-track {
+  display: flex; gap: 60px;
+  animation: scroll 38s linear infinite;
+  width: max-content;
+}
+.industries-track span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  transition: color .3s;
+}
+.industries-track span:hover { color: white; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+/* ===== PROCESS (light) ===== */
+.process-section {
+  background: var(--paper-warm);
+  color: var(--navy);
+  padding: 160px 32px;
+}
+.process-section .section-title { color: var(--navy); }
+.process-section-inner { max-width: 1480px; margin: 0 auto; }
+.process-head { margin-bottom: 80px; max-width: 920px; }
+
+.process-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  position: relative;
+}
+.process-list::before {
+  content: '';
+  position: absolute;
+  top: 18px; left: 8%;
+  right: 8%;
+  height: 1px;
+  background-image: linear-gradient(90deg, var(--purple) 50%, transparent 50%);
+  background-size: 12px 1px;
+  opacity: 0.4;
+  z-index: 0;
+}
+.proc-step {
+  position: relative;
+  z-index: 1;
+}
+.proc-num {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--purple);
+  letter-spacing: 0.06em;
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.proc-num::before {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--purple);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 14px rgba(13,27,42,0.05);
+}
+.proc-step:nth-child(1) .proc-num::before { content: '01'; }
+.proc-step:nth-child(2) .proc-num::before { content: '02'; }
+.proc-step:nth-child(3) .proc-num::before { content: '03'; }
+.proc-step:nth-child(4) .proc-num::before { content: '04'; }
+.proc-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+}
+.proc-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+/* ===== METRICS (dark) ===== */
+.metrics-section {
+  background: var(--navy);
+  color: white;
+  padding: 160px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.metrics-section::before {
+  content: '';
+  position: absolute;
+  top: -300px; right: -200px;
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(131,58,224,0.4), transparent 60%);
+  pointer-events: none;
+}
+.metrics-section::after {
+  content: '';
+  position: absolute;
+  bottom: -200px; left: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(203,108,230,0.20), transparent 60%);
+  pointer-events: none;
+}
+.metrics-inner { max-width: 1480px; margin: 0 auto; position: relative; }
+.metrics-head { margin-bottom: 80px; }
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.metric-cell {
+  padding: 36px 24px;
+  border-left: 1px solid rgba(255,255,255,0.10);
+}
+.metric-cell:first-child { border-left: 0; padding-left: 0; }
+.metric-value {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(56px, 6.5vw, 100px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  background: linear-gradient(180deg, white 0%, rgba(255,255,255,0.5) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+}
+.metric-value .unit {
+  font-size: 0.42em;
+  font-weight: 300;
+  -webkit-text-fill-color: var(--magenta);
+  margin-left: 4px;
+}
+.metric-label {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.65);
+  max-width: 220px;
+}
+.metric-source {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 16px;
+  letter-spacing: 0.02em;
+}
+
+/* ===== TEAM (warm light, human) ===== */
+.team-section {
+  background: var(--paper-warm);
+  color: var(--navy);
+  padding: 160px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.team-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+.team-section .section-title { color: var(--navy); }
+.team-handnote {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  color: var(--purple);
+  margin-top: 24px;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+.team-handnote::before { content: '↳ '; color: var(--magenta); }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.team-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex; flex-direction: column;
+  transition: all .3s ease;
+}
+.team-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -20px rgba(13,27,42,0.15); }
+.team-card.featured {
+  background: var(--navy);
+  color: white;
+  border-color: transparent;
+}
+.team-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.team-avatar.g1 { background: linear-gradient(135deg, #833AE0, #CB6CE6); }
+.team-avatar.g2 { background: linear-gradient(135deg, #2D5BD9, #5BC0F8); }
+.team-avatar.g3 { background: linear-gradient(135deg, #E04F8B, #F5A66E); }
+.team-avatar.g4 { background: linear-gradient(135deg, #44d97a, #2D5BD9); }
+.team-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.015em;
+}
+.team-role {
+  font-size: 12px;
+  color: var(--slate-2);
+  margin-top: 4px;
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0.04em;
+}
+.team-card.featured .team-role { color: rgba(255,255,255,0.6); }
+.team-card.featured .team-name { color: white; }
+.team-quote {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--slate);
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.team-card.featured .team-quote { color: rgba(255,255,255,0.7); border-top-color: rgba(255,255,255,0.1); }
+
+/* ===== CTA (dark, centered) ===== */
+.cta-section {
+  background: var(--navy);
+  color: white;
+  padding: 160px 32px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.cta-section::before, .cta-section::after {
+  content: '';
+  position: absolute;
+  width: 460px; height: 460px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+.cta-section::before { top: -160px; left: -160px; background: var(--magenta); }
+.cta-section::after { bottom: -160px; right: -160px; background: var(--purple); }
+.cta-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+.cta-pre {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: var(--magenta);
+  margin-bottom: 16px;
+  display: block;
+  transform: rotate(-1deg);
+}
+.cta-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(48px, 6.5vw, 104px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  margin-bottom: 28px;
+  color: white;
+}
+.cta-title .accent {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.cta-sub {
+  font-size: 19px;
+  color: rgba(255,255,255,0.65);
+  max-width: 580px;
+  margin: 0 auto 44px;
+  line-height: 1.55;
+}
+.cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-trust {
+  margin-top: 44px;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.7);
+  padding: 80px 32px 40px;
+  position: relative;
+}
+.footer-inner { max-width: 1480px; margin: 0 auto; }
+.footer-top {
+  display: grid;
+  grid-template-columns: 2.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand img { height: 44px; width: auto; margin-bottom: 22px; filter: brightness(0) invert(1); }
+.footer-brand p { font-size: 14px; line-height: 1.6; max-width: 320px; }
+.footer-handnote {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--magenta);
+  margin-top: 28px;
+  display: inline-block;
+  transform: rotate(-1.5deg);
+}
+.footer-col h4 { font-family: 'Poppins', sans-serif; color: white; font-size: 13px; font-weight: 600; margin-bottom: 18px; letter-spacing: -0.01em; }
+.footer-col a { display: block; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; margin-bottom: 12px; transition: color .2s; }
+.footer-col a:hover { color: white; }
+.footer-col span.static { display: block; color: rgba(255,255,255,0.55); font-size: 14px; margin-bottom: 12px; }
+
+.footer-bot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 28px; font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-bot .meta { display: flex; gap: 24px; align-items: center; }
+.footer-bot .clock {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.55);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.footer-bot .clock::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--magenta);
+  box-shadow: 0 0 8px var(--magenta);
+  animation: livePulse 2s ease-in-out infinite;
+}
+.footer-bot .social { display: flex; gap: 16px; }
+.footer-bot .social a { color: rgba(255,255,255,0.45); text-decoration: none; }
+.footer-bot .social a:hover { color: var(--magenta); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { height: 420px; max-width: 480px; margin: 0 auto; width: 100%; }
+  .hero-art-1 { right: 20px; width: 260px; height: 320px; }
+  .hero-art-2 { width: 220px; height: 180px; }
+  .hero-art-3 { width: 180px; height: 160px; right: 0; top: 160px; }
+  .manifesto-inner, .team-inner { grid-template-columns: 1fr; gap: 48px; }
+  .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+  .solution-card.span-2, .solution-card.span-3, .solution-card.span-4 { grid-column: span 2; }
+  .tm-grid { grid-template-columns: 1fr; gap: 48px; }
+  .tm-card.large { grid-row: auto; }
+  .process-list { grid-template-columns: repeat(2, 1fr); }
+  .process-list::before { display: none; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .metric-cell:nth-child(3) { border-left: 0; padding-left: 0; }
+  .metric-cell { border-top: 1px solid rgba(255,255,255,0.10); padding-top: 36px; }
+  .metric-cell:nth-child(1), .metric-cell:nth-child(2) { border-top: 0; padding-top: 36px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+}
+@media (max-width: 640px) {
+  .nav { padding: 14px 18px; }
+  .nav-brand img { height: 32px; }
+  .nav-clock { display: none; }
+  .hero { padding: 130px 18px 100px; }
+  .manifesto, .solutions-section, .testimonials, .process-section, .metrics-section, .team-section, .cta-section { padding: 90px 18px; }
+  .solutions-grid, .tm-grid, .process-list, .metrics-grid, .team-grid, .footer-top { grid-template-columns: 1fr; }
+  .solution-card.span-2, .solution-card.span-3, .solution-card.span-4 { grid-column: span 1; }
+  .metric-cell { border-left: 0; padding-left: 0; padding-right: 0; }
+  .footer-top { grid-template-columns: 1fr; gap: 36px; }
+  .hero-cta, .cta-actions { flex-direction: column; align-items: stretch; }
+  .hero-cta .btn, .cta-actions .btn { justify-content: center; }
+  .hero-note { display: none; }
+}
 </style>
 </head>
 <body>
 
-<div class="corner-mark bl">
-  <span data-es>Panamá · 09°N 79°W</span>
-  <span data-en>Panama · 09°N 79°W</span>
-</div>
-<div class="corner-mark br live-clock" id="clock">—</div>
-
-<div class="shell">
-
-  <!-- ============ HEADER ============ -->
-  <header class="fade-up">
-    <div class="brand">
-      <span>henkan</span>
-      <span class="brand-sep">/</span>
-      <span class="brand-mark"><em>cx</em></span>
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <a href="/" class="nav-brand">
+    <img src="https://www.henkancx.com/logo-henkancx.png" alt="HenkanCX">
+  </a>
+  <div class="nav-links">
+    <a href="#solutions" data-i18n="nav.solutions">Soluciones</a>
+    <a href="#process" data-i18n="nav.process">Proceso</a>
+    <a href="#team" data-i18n="nav.team">Equipo</a>
+    <a href="https://demo.henkancx.com" target="_blank">Demos ↗</a>
+  </div>
+  <div class="nav-actions">
+    <span class="nav-clock" id="navClock">PTY —</span>
+    <div class="lang-toggle">
+      <button data-lang="es" class="active">ES</button>
+      <button data-lang="en">EN</button>
     </div>
+    <a href="#contact" class="btn btn-mag" data-i18n="nav.talk">Conversemos</a>
+  </div>
+</nav>
 
-    <div class="top-meta">
-      <span class="status">
-        <span class="status-dot"></span>
-        <span data-en>In progress</span>
-        <span data-es>En progreso</span>
-      </span>
-      <div class="lang-toggle">
-        <button data-lang="es" class="active">ES</button>
-        <span class="divider">·</span>
-        <button data-lang="en">EN</button>
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        <span data-i18n="hero.eyebrow">HenkanCX · Panamá · LATAM</span>
       </div>
-    </div>
-  </header>
-
-  <!-- ============ MAIN ============ -->
-  <main>
-    <section class="hero">
-      <div class="eyebrow fade-up d1">
-        <span data-en>v2.0 · Site under reconstruction</span>
-        <span data-es>v2.0 · Sitio en reconstrucción</span>
-      </div>
-
-      <h1 class="hero-title fade-up d2">
-        <span data-es>Reimaginando<br>la <em>experiencia</em><br>del cliente.</span>
-        <span data-en>Reimagining<br>the customer<br><em>experience.</em></span>
+      <h1 class="hero-title">
+        <span data-i18n="hero.title.l1">Transformamos</span>
+        <span data-i18n="hero.title.l2">la experiencia del cliente</span>
+        <span class="accent" data-i18n="hero.title.l3">desde el día 1.</span>
       </h1>
+      <p class="hero-sub" data-i18n="hero.sub">Somos un copiloto de IA y automatización para empresas latinoamericanas. Desde inspecciones inteligentes hasta contact centers con coaching en vivo. ROI medible desde el primer mes — sin promesas vacías.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-mag btn-large" data-i18n="hero.cta1">Conversemos →</a>
+        <a href="#solutions" class="btn btn-outline-light btn-large" data-i18n="hero.cta2">Ver soluciones</a>
+      </div>
+    </div>
 
-      <p class="hero-sub fade-up d3">
-        <span data-es>
-          Estamos construyendo algo nuevo. Una experiencia digital que refleje cómo trabajamos: con inteligencia artificial aplicada, criterio y atención al detalle.
-        </span>
-        <span data-en>
-          We're building something new. A digital experience that mirrors how we actually work: with applied AI, judgment, and an obsession for detail.
-        </span>
-      </p>
-    </section>
+    <div class="hero-visual">
+      <!-- gradient art card with abstract people -->
+      <div class="hero-art-card hero-art-1">
+        <svg class="hero-person-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="p1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.5"/>
+            </linearGradient>
+          </defs>
+          <!-- Person 1 (back-left) -->
+          <g opacity="0.7">
+            <circle cx="80" cy="120" r="22" fill="url(#p1)"/>
+            <path d="M50 320 Q50 180 80 180 Q110 180 110 320 Z" fill="url(#p1)"/>
+          </g>
+          <!-- Person 2 (front-center) -->
+          <g>
+            <circle cx="170" cy="105" r="28" fill="white" opacity="0.95"/>
+            <path d="M120 320 Q120 175 170 175 Q220 175 220 320 Z" fill="white" opacity="0.95"/>
+          </g>
+          <!-- Person 3 (right) -->
+          <g opacity="0.65">
+            <circle cx="248" cy="125" r="20" fill="url(#p1)"/>
+            <path d="M222 320 Q222 190 248 190 Q274 190 274 320 Z" fill="url(#p1)"/>
+          </g>
+        </svg>
+      </div>
 
-    <!-- ============ INFO STRIP ============ -->
-    <section class="info-strip">
-      <div class="info-block fade-up d4">
-        <div class="label">
-          <span data-en>Reach us</span>
-          <span data-es>Contáctanos</span>
-        </div>
-        <div class="value">
-          <a href="mailto:info@henkancx.com">info@henkancx.com</a>
+      <!-- data card -->
+      <div class="hero-art-card hero-art-2">
+        <div class="data-content">
+          <span class="data-line">CSAT · NPS · NUMBERS</span>
+          <span class="data-big">+47%</span>
+          <span class="data-line" style="opacity:0.4;">satisfacción</span>
+          <div class="data-spark">
+            <div style="height: 30%"></div>
+            <div style="height: 45%"></div>
+            <div style="height: 38%"></div>
+            <div style="height: 60%"></div>
+            <div style="height: 72%"></div>
+            <div style="height: 65%"></div>
+            <div style="height: 88%"></div>
+            <div style="height: 100%"></div>
+          </div>
         </div>
       </div>
 
-      <div class="info-block fade-up d4">
-        <div class="label">
-          <span data-en>Direct line</span>
-          <span data-es>Línea directa</span>
+      <!-- quote card (light) -->
+      <div class="hero-art-card hero-art-3">
+        <div class="quote-content">
+          <p class="quote-text" data-i18n="hero.qcard.text">Los implementamos en 3 semanas y el ROI llegó en el primer mes.</p>
+          <span class="quote-attr" data-i18n="hero.qcard.attr">CTO · Aseguradora · LATAM</span>
         </div>
-        <div class="value">
-          <a href="https://wa.me/50764671392" target="_blank" rel="noopener">+507 6467 1392</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- hand-drawn note -->
+  <div class="hero-note">
+    <svg class="arrow-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 50 Q 30 10, 60 25 T 90 15 M85 10 L92 16 M88 22 L93 14" />
+    </svg>
+    <span class="note-text"><b>PD:</b> respondemos en menos de 4 horas — pinky promise 🤝</span>
+  </div>
+</section>
+
+<!-- ===== MANIFESTO ===== -->
+<section class="manifesto">
+  <div class="manifesto-inner">
+    <div>
+      <div class="manifesto-eyebrow" data-i18n="manifesto.eyebrow">POR QUÉ EXISTIMOS</div>
+      <h2 class="manifesto-title">
+        <span data-i18n="manifesto.title.l1">Las empresas latinoamericanas se ahogan</span>
+        <span class="accent" data-i18n="manifesto.title.l2">en tickets y procesos manuales.</span>
+      </h2>
+      <div class="manifesto-body">
+        <p data-i18n="manifesto.p1" data-i18n-html>Mientras eso pasa, la <strong>estrategia se queda en pausa</strong>. Lo vimos repetirse demasiadas veces — equipos brillantes ahogándose en tareas que una máquina podía resolver en segundos.</p>
+        <p data-i18n="manifesto.p2" data-i18n-html>Por eso nacimos: para convertir la automatización y la IA en un <strong>copiloto accesible</strong> que libera a los equipos a hacer lo que sí mueve la aguja. Sin frameworks de moda. Sin promesas vacías. Resultados medibles desde el día 1.</p>
+      </div>
+    </div>
+
+    <div class="founder-card">
+      <p class="founder-quote" data-i18n="manifesto.founderQuote">No vendemos IA porque sea sexy. La vendemos porque libera el tiempo de tu equipo para hacer cosas que solo los humanos pueden hacer.</p>
+      <div class="founder-attr">
+        <div class="founder-avatar">G</div>
+        <div class="founder-info">
+          <div class="name" data-i18n="manifesto.founderName">George Maytin</div>
+          <div class="role" data-i18n="manifesto.founderRole">Co-fundador · CTO HenkanCX</div>
+        </div>
+      </div>
+      <span class="founder-signature">— George ✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTIONS ===== -->
+<section class="solutions-section dark" id="solutions">
+  <div class="solutions-inner">
+    <div class="solutions-head">
+      <div class="left">
+        <div class="section-eyebrow" data-i18n="solutions.eyebrow">SOLUCIONES IA · 06</div>
+        <h2 class="section-title">
+          <span data-i18n="solutions.title.l1">Seis productos.</span><br>
+          <span class="accent" data-i18n="solutions.title.l2">Un solo norte: que tus clientes te amen.</span>
+        </h2>
+      </div>
+      <p class="section-sub" style="max-width:380px;" data-i18n="solutions.sub">Cada producto es una pieza de tu CX. Combínalos como te haga sentido — o tómalos uno a uno.</p>
+    </div>
+
+    <div class="solutions-grid">
+
+      <a href="https://demo.henkancx.com" target="_blank" class="solution-card span-3">
+        <svg class="sol-bg-art" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="sg1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#CB6CE6" stop-opacity="0.5"/><stop offset="100%" stop-color="#CB6CE6" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="120" cy="120" r="80" fill="url(#sg1)"/>
+          <rect x="50" y="100" width="80" height="50" stroke="#CB6CE6" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.7"/>
+        </svg>
+        <span class="sol-tag" data-i18n="sol1.tag">Seguros · Computer Vision</span>
+        <h3 class="sol-name">Snnapi</h3>
+        <p class="sol-desc" data-i18n="sol1.desc">Auto-inspección desde el móvil del cliente. Computer vision que detecta daños y fraudes en segundos. Emisión y renovación de pólizas sin agente intermedio.</p>
+        <div class="sol-foot">
+          <span class="sol-metric" data-i18n="sol1.metric"><b>95%</b> ↓ tiempos · <b>+70%</b> fraude</span>
+          <span class="sol-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="https://demo.henkancx.com" target="_blank" class="solution-card span-3">
+        <svg class="sol-bg-art" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="sg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#833AE0" stop-opacity="0.45"/><stop offset="100%" stop-color="#833AE0" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="120" cy="120" r="80" fill="url(#sg2)"/>
+          <circle cx="80" cy="100" r="6" fill="#833AE0"/>
+          <circle cx="160" cy="140" r="6" fill="#CB6CE6"/>
+          <circle cx="120" cy="80" r="5" fill="#833AE0" opacity="0.7"/>
+          <line x1="80" y1="100" x2="160" y2="140" stroke="#CB6CE6" stroke-width="1" opacity="0.4"/>
+          <line x1="120" y1="80" x2="160" y2="140" stroke="#CB6CE6" stroke-width="1" opacity="0.4"/>
+        </svg>
+        <span class="sol-tag" data-i18n="sol2.tag">Telecom · Field Ops</span>
+        <h3 class="sol-name">TeleInspect Suite</h3>
+        <p class="sol-desc" data-i18n="sol2.desc">Gestión inteligente de inspecciones, órdenes de trabajo e inventario IoT para sitios telecom. Anticipamos fallas antes de que escalen.</p>
+        <div class="sol-foot">
+          <span class="sol-metric" data-i18n="sol2.metric"><b>99%</b> trazabilidad · <b>60%</b> ↓ reportes</span>
+          <span class="sol-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="https://demo.henkancx.com" target="_blank" class="solution-card span-2">
+        <svg class="sol-bg-art" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="sg3" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#CB6CE6" stop-opacity="0.4"/><stop offset="100%" stop-color="#CB6CE6" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="140" cy="120" r="70" fill="url(#sg3)"/>
+          <g stroke="#CB6CE6" stroke-width="2" fill="none">
+            <line x1="60" y1="120" x2="60" y2="120"/>
+            <line x1="80" y1="100" x2="80" y2="140"/>
+            <line x1="100" y1="80" x2="100" y2="160"/>
+            <line x1="120" y1="60" x2="120" y2="180"/>
+            <line x1="140" y1="80" x2="140" y2="160"/>
+            <line x1="160" y1="100" x2="160" y2="140"/>
+          </g>
+        </svg>
+        <span class="sol-tag" data-i18n="sol3.tag">Voice IA · Live</span>
+        <h3 class="sol-name" data-i18n="sol3.name">Contact Center IA</h3>
+        <p class="sol-desc" data-i18n="sol3.desc">Coach en vivo, análisis de tono dinámico, auditoría 100% automática de cada llamada.</p>
+        <div class="sol-foot">
+          <span class="sol-metric" data-i18n="sol3.metric"><b>+30%</b> productividad</span>
+          <span class="sol-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="https://demo.henkancx.com" target="_blank" class="solution-card span-4">
+        <svg class="sol-bg-art" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="sg4" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#25D366" stop-opacity="0.30"/><stop offset="100%" stop-color="#25D366" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="120" cy="120" r="80" fill="url(#sg4)"/>
+          <rect x="60" y="80" width="100" height="22" rx="11" fill="rgba(255,255,255,0.10)"/>
+          <rect x="80" y="110" width="80" height="22" rx="11" fill="rgba(37,211,102,0.30)"/>
+          <rect x="60" y="140" width="110" height="22" rx="11" fill="rgba(255,255,255,0.10)"/>
+        </svg>
+        <span class="sol-tag" data-i18n="sol4.tag">WhatsApp · API Oficial</span>
+        <h3 class="sol-name" data-i18n="sol4.name">Chatbots IA + WhatsApp</h3>
+        <p class="sol-desc" data-i18n="sol4.desc">Bots conversacionales entrenados con IA generativa sobre la línea oficial de WhatsApp Business. Integrados a tu CRM, ERP y sistemas core. Atención 24/7 que se siente humana.</p>
+        <div class="sol-foot">
+          <span class="sol-metric" data-i18n="sol4.metric"><b>24/7</b> atención · <b>CSAT &gt;80%</b></span>
+          <span class="sol-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="https://demo.henkancx.com" target="_blank" class="solution-card span-3">
+        <svg class="sol-bg-art" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="sg5" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#CB6CE6" stop-opacity="0.4"/><stop offset="100%" stop-color="#CB6CE6" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="120" cy="120" r="80" fill="url(#sg5)"/>
+          <path d="M40 180 Q120 100 200 60" stroke="#CB6CE6" stroke-width="2" fill="none"/>
+          <circle cx="40" cy="180" r="4" fill="white"/>
+          <circle cx="120" cy="120" r="4" fill="white"/>
+          <circle cx="200" cy="60" r="5" fill="#CB6CE6"/>
+        </svg>
+        <span class="sol-tag" data-i18n="sol5.tag">Deportivo · Federaciones</span>
+        <h3 class="sol-name">SIFED</h3>
+        <p class="sol-desc" data-i18n="sol5.desc">Gestión integral para federaciones, clubes y atletas de alto rendimiento. Historial médico, rendimiento y resultados competitivos en un solo lugar.</p>
+        <div class="sol-foot">
+          <span class="sol-metric" data-i18n="sol5.metric"><b>360°</b> del atleta</span>
+          <span class="sol-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="https://demo.henkancx.com" target="_blank" class="solution-card span-3">
+        <svg class="sol-bg-art" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="sg6" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#44d97a" stop-opacity="0.30"/><stop offset="100%" stop-color="#44d97a" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="120" cy="120" r="80" fill="url(#sg6)"/>
+          <g fill="rgba(255,255,255,0.4)">
+            <ellipse cx="80" cy="140" rx="14" ry="10"/>
+            <ellipse cx="130" cy="155" rx="12" ry="8"/>
+            <ellipse cx="170" cy="135" rx="10" ry="7"/>
+          </g>
+          <rect x="76" y="116" width="22" height="9" rx="2" fill="rgba(13,27,42,0.7)" stroke="#44d97a" stroke-width="0.5"/>
+        </svg>
+        <span class="sol-tag" data-i18n="sol6.tag">Ganadería · IA</span>
+        <h3 class="sol-name" data-i18n="sol6.name">Sistema Ganadero IA</h3>
+        <p class="sol-desc" data-i18n="sol6.desc">Inventario, vacunación, alimentación, reproducción y salud animal. Ciclo productivo completo del hato bajo control desde tu móvil.</p>
+        <div class="sol-foot">
+          <span class="sol-metric" data-i18n="sol6.metric"><b>100%</b> trazable</span>
+          <span class="sol-arrow">↗</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials light">
+  <div class="testimonials-inner">
+    <div class="testimonials-head">
+      <div class="section-eyebrow" data-i18n="tm.eyebrow">VOCES · TESTIMONIOS REALES</div>
+      <h2 class="section-title">
+        <span data-i18n="tm.title.l1">Lo que dicen quienes</span><br>
+        <span class="accent" data-i18n="tm.title.l2">ya están dentro.</span>
+      </h2>
+      <p class="section-sub" data-i18n="tm.sub">Por respeto a la confidencialidad de nuestros clientes, mantenemos sus nombres reservados. Pero las historias son reales — y los números también.</p>
+    </div>
+
+    <div class="tm-grid">
+      <div class="tm-card large">
+        <p class="tm-quote" data-i18n="tm.q1">No nos vendieron una herramienta. Nos vendieron un copiloto que pensó con nosotros — y entendió nuestro negocio antes de tocar una línea de código.</p>
+        <div class="tm-attr">
+          <div class="tm-avatar">CT</div>
+          <div>
+            <div class="role" data-i18n="tm.r1">CTO</div>
+            <div class="sector" data-i18n="tm.s1">ASEGURADORA REGIONAL · LATAM</div>
+          </div>
         </div>
       </div>
 
-      <div class="info-block fade-up d4">
-        <div class="label">
-          <span data-en>Headquarters</span>
-          <span data-es>Sede</span>
-        </div>
-        <div class="value">
-          <span data-en>Panama City, Panama</span>
-          <span data-es>Ciudad de Panamá, Panamá</span>
-        </div>
-      </div>
-
-      <div class="progress-block fade-up d5">
-        <div class="progress-meta">
-          <span>
-            <span data-es>Progreso del rediseño</span>
-            <span data-en>Redesign progress</span>
-          </span>
-          <span id="pct">62%</span>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="fade-up d6">
-    <div class="copy">
-      <div>© 2026 HenkanCX</div>
       <div>
-        <span data-en>AI-powered customer experience · Latin America</span>
-        <span data-es>Experiencia del cliente con IA · América Latina</span>
+        <div class="tm-card">
+          <p class="tm-quote" data-i18n="tm.q2">Pasamos de 14 días a 6 horas en una inspección. El equipo casi llora.</p>
+          <div class="tm-attr">
+            <div class="tm-avatar">DO</div>
+            <div>
+              <div class="role" data-i18n="tm.r2">Directora Operaciones</div>
+              <div class="sector" data-i18n="tm.s2">TELECOM · LATAM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="tm-card">
+          <p class="tm-quote" data-i18n="tm.q3">El coach de IA en vivo cambió cómo hablamos con los clientes. Ya no se trata solo de cerrar — se trata de escuchar bien.</p>
+          <div class="tm-attr">
+            <div class="tm-avatar">VC</div>
+            <div>
+              <div class="role" data-i18n="tm.r3">VP Customer Experience</div>
+              <div class="sector" data-i18n="tm.s3">RETAIL · LATAM</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="social">
-      <a href="https://linkedin.com/company/henkancx" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://instagram.com/henkancx" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://wa.me/50764671392" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</section>
+
+<!-- ===== INDUSTRIES ===== -->
+<section class="industries">
+  <div class="industries-inner">
+    <span class="industries-label">
+      <span data-i18n="ind.label">Implementado en</span> <b><span data-i18n="ind.industries">7 industrias</span></b> · <b><span data-i18n="ind.countries">5 países LATAM</span></b>
+    </span>
+    <div class="industries-marquee">
+      <div class="industries-track">
+        <span data-i18n="ind.insurance">Seguros</span>
+        <span data-i18n="ind.telecom">Telecom</span>
+        <span data-i18n="ind.retail">Retail</span>
+        <span data-i18n="ind.hospitality">Hotelería</span>
+        <span data-i18n="ind.automotive">Automotriz</span>
+        <span data-i18n="ind.brokers">Brokers</span>
+        <span data-i18n="ind.fieldOps">Field Ops</span>
+        <span data-i18n="ind.sports">Deportivo</span>
+        <span data-i18n="ind.livestock">Ganadería</span>
+        <span data-i18n="ind.agribusiness">Agroindustria</span>
+        <span data-i18n="ind.insurance">Seguros</span>
+        <span data-i18n="ind.telecom">Telecom</span>
+        <span data-i18n="ind.retail">Retail</span>
+        <span data-i18n="ind.hospitality">Hotelería</span>
+        <span data-i18n="ind.automotive">Automotriz</span>
+        <span data-i18n="ind.brokers">Brokers</span>
+        <span data-i18n="ind.fieldOps">Field Ops</span>
+        <span data-i18n="ind.sports">Deportivo</span>
+        <span data-i18n="ind.livestock">Ganadería</span>
+        <span data-i18n="ind.agribusiness">Agroindustria</span>
+      </div>
     </div>
-  </footer>
-</div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="process-section light" id="process">
+  <div class="process-section-inner">
+    <div class="process-head">
+      <div class="section-eyebrow" data-i18n="proc.eyebrow">CÓMO TRABAJAMOS · 4 PASOS</div>
+      <h2 class="section-title">
+        <span data-i18n="proc.title.l1">Del primer hello al ROI:</span><br>
+        <span class="accent" data-i18n="proc.title.l2">en semanas, no meses.</span>
+      </h2>
+      <p class="section-sub" data-i18n="proc.sub">Nada de procesos eternos ni RFPs de 60 páginas. Diagnosticamos, diseñamos, implementamos y optimizamos — con tu equipo dentro en cada paso.</p>
+    </div>
+
+    <div class="process-list">
+      <div class="proc-step">
+        <div class="proc-num" data-i18n="proc.s1.step">DIAGNÓSTICO</div>
+        <h3 class="proc-name" data-i18n="proc.s1.name">Mapeo del journey</h3>
+        <p class="proc-desc" data-i18n="proc.s1.desc">Analizamos tu operación actual y los puntos de fricción del customer journey, con métricas de baseline.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num" data-i18n="proc.s2.step">DISEÑO</div>
+        <h3 class="proc-name" data-i18n="proc.s2.name">Estrategia y KPIs</h3>
+        <p class="proc-desc" data-i18n="proc.s2.desc">Diseñamos la solución a medida con KPIs de éxito claros y un roadmap de implementación realista.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num" data-i18n="proc.s3.step">IMPLEMENTACIÓN</div>
+        <h3 class="proc-name" data-i18n="proc.s3.name">Despliegue ágil</h3>
+        <p class="proc-desc" data-i18n="proc.s3.desc">Implementación por sprints con capacitación al equipo. Resultados visibles desde el día 1.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num" data-i18n="proc.s4.step">OPTIMIZACIÓN</div>
+        <h3 class="proc-name" data-i18n="proc.s4.name">Mejora continua</h3>
+        <p class="proc-desc" data-i18n="proc.s4.desc">Tu copiloto IA aprende con cada interacción. Optimización basada en datos reales, no suposiciones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METRICS ===== -->
+<section class="metrics-section dark">
+  <div class="metrics-inner">
+    <div class="metrics-head">
+      <div class="section-eyebrow" data-i18n="met.eyebrow">RESULTADOS REALES · CASOS EN PRODUCCIÓN</div>
+      <h2 class="section-title">
+        <span data-i18n="met.title.l1">Métricas que mueven</span><br>
+        <span class="accent" data-i18n="met.title.l2">la aguja del negocio.</span>
+      </h2>
+      <p class="section-sub" data-i18n="met.sub">No vendemos promesas. Vendemos resultados medibles — desde el primer mes de operación.</p>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric-cell">
+        <div class="metric-value">95<span class="unit">%↓</span></div>
+        <div class="metric-label" data-i18n="met.l1">Reducción de tiempos en inspección de seguros</div>
+        <div class="metric-source" data-i18n="met.s1">Sector Seguros · LATAM</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-value">+70<span class="unit">%</span></div>
+        <div class="metric-label" data-i18n="met.l2">Detección automática de fraude vs. modelo manual</div>
+        <div class="metric-source" data-i18n="met.s2">Snnapi · Producción</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-value">35<span class="unit">%↑</span></div>
+        <div class="metric-label" data-i18n="met.l3">Mejora en SLA de operaciones telecom</div>
+        <div class="metric-source" data-i18n="met.s3">Sector Telecom · LATAM</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-value">99<span class="unit">%</span></div>
+        <div class="metric-label" data-i18n="met.l4">Trazabilidad en órdenes de trabajo en campo</div>
+        <div class="metric-source" data-i18n="met.s4">Sector Field Ops · LATAM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="team-section light" id="team">
+  <div class="team-inner">
+    <div>
+      <div class="section-eyebrow" data-i18n="team.eyebrow">EL EQUIPO DETRÁS</div>
+      <h2 class="section-title">
+        <span data-i18n="team.title.l1">No somos una fábrica de IA.</span><br>
+        <span class="accent" data-i18n="team.title.l2">Somos un equipo pequeño con criterio.</span>
+      </h2>
+      <p class="section-sub" style="color:var(--slate);" data-i18n="team.sub">Un equipo cross-funcional con experiencia en seguros, telecom, retail y deporte. Pasamos años dentro de las industrias antes de construirles software. Por eso el software hace sentido.</p>
+      <span class="team-handnote" data-i18n="team.handnote">cuando trabajas con nosotros, hablas con nosotros — no con un account executive</span>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card featured">
+        <div class="team-avatar g1">G</div>
+        <div class="team-name" data-i18n="team.m1.name">George Maytin</div>
+        <div class="team-role" data-i18n="team.m1.role">Co-fundador · CTO</div>
+        <p class="team-quote" data-i18n="team.m1.quote">"La IA es una herramienta. El criterio es lo que falta."</p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar g2">A</div>
+        <div class="team-name" data-i18n="team.m2.name">Andrea Nava</div>
+        <div class="team-role" data-i18n="team.m2.role">Co-fundadora · Head Comercial</div>
+        <p class="team-quote" data-i18n="team.m2.quote">"Cada cliente nuevo es una promesa que cumplimos juntos."</p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar g3">+</div>
+        <div class="team-name" data-i18n="team.m3.name">Equipo de IA + Producto</div>
+        <div class="team-role" data-i18n="team.m3.role">Panamá · Costa Rica · Colombia</div>
+        <p class="team-quote" data-i18n="team.m3.quote">"Ingenieros, diseñadores, científicos de datos y especialistas de industria."</p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar g4">CX</div>
+        <div class="team-name" data-i18n="team.m4.name" data-i18n-html>Tu equipo &amp; nosotros</div>
+        <div class="team-role" data-i18n="team.m4.role">Trabajamos juntos</div>
+        <p class="team-quote" data-i18n="team.m4.quote">"Nada de outsourcing oscuro. Mismo Slack, mismas reuniones, mismas metas."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section dark" id="contact">
+  <div class="cta-inner">
+    <span class="cta-pre" data-i18n="cta.pre">¿conversamos?</span>
+    <h2 class="cta-title">
+      <span data-i18n="cta.title.l1">Una llamada de 30 minutos.</span><br>
+      <span class="accent" data-i18n="cta.title.l2">Sin venta dura, prometido.</span>
+    </h2>
+    <p class="cta-sub" data-i18n="cta.sub">Te mostramos los demos en vivo conectados a casos reales de tu industria. Si hace clic, hablamos de implementación. Si no — al menos te llevas ideas.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/50764671392?text=¡Hola%21%20me%20gustaría%20agendar%20una%20llamada" target="_blank" rel="noopener" class="btn btn-mag btn-large" data-i18n="cta.book">Agendar llamada (WhatsApp)</a>
+      <a href="mailto:info@henkancx.com" class="btn btn-outline-light btn-large">info@henkancx.com</a>
+    </div>
+    <div class="cta-trust" data-i18n="cta.trust">— Andrea, George y el resto del equipo</div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://www.henkancx.com/logo-henkancx.png" alt="HenkanCX">
+        <p data-i18n="footer.tagline">Transformamos la experiencia del cliente desde el día 1. Soluciones de IA y automatización para Latinoamérica.</p>
+        <span class="footer-handnote" data-i18n="footer.handnote">hecho con cariño en Ciudad de Panamá ☀️</span>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.solutions">Soluciones</h4>
+        <a href="#solutions">Snnapi</a>
+        <a href="#solutions">TeleInspect Suite</a>
+        <a href="#solutions" data-i18n="footer.cc">Contact Center IA</a>
+        <a href="#solutions" data-i18n="footer.wa">Chatbot WhatsApp</a>
+        <a href="#solutions">SIFED</a>
+        <a href="#solutions" data-i18n="footer.gan">Sistema Ganadero IA</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.company">Empresa</h4>
+        <a href="#team" data-i18n="footer.team">El equipo</a>
+        <a href="#process" data-i18n="footer.process">Cómo trabajamos</a>
+        <a href="https://demo.henkancx.com" target="_blank">Demos ↗</a>
+        <a href="#contact" data-i18n="footer.contact">Conversemos</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.contactH">Contacto</h4>
+        <a href="https://wa.me/50764671392" target="_blank" rel="noopener">+507 6467 1392</a>
+        <a href="mailto:info@henkancx.com">info@henkancx.com</a>
+        <span class="static" data-i18n="footer.location">Ciudad de Panamá, Panamá</span>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span><span data-i18n="footer.copyright">© 2026 HenkanCX. Todos los derechos reservados.</span></span>
+      <div class="meta">
+        <span class="clock" id="footerClock">PTY —</span>
+        <div class="social">
+          <a href="https://linkedin.com/company/henkancx" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://instagram.com/henkancx" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
-  // ============ LANGUAGE TOGGLE ============
-  (function() {
-    const html = document.documentElement;
-    const buttons = document.querySelectorAll('.lang-toggle button');
-    const stored = localStorage.getItem('henkancx_lang');
-    const initial = stored || (navigator.language?.startsWith('en') ? 'en' : 'es');
-    setLang(initial);
+// ===== i18n =====
+const i18n = {
+  es: {
+    'nav.solutions': 'Soluciones',
+    'nav.process': 'Proceso',
+    'nav.team': 'Equipo',
+    'nav.talk': 'Conversemos',
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => setLang(btn.dataset.lang));
-    });
+    'hero.eyebrow': 'HenkanCX · Panamá · LATAM',
+    'hero.title.l1': 'Transformamos',
+    'hero.title.l2': 'la experiencia del cliente',
+    'hero.title.l3': 'desde el día 1.',
+    'hero.sub': 'Somos un copiloto de IA y automatización para empresas latinoamericanas. Desde inspecciones inteligentes hasta contact centers con coaching en vivo. ROI medible desde el primer mes — sin promesas vacías.',
+    'hero.cta1': 'Conversemos →',
+    'hero.cta2': 'Ver soluciones',
+    'hero.qcard.text': 'Los implementamos en 3 semanas y el ROI llegó en el primer mes.',
+    'hero.qcard.attr': 'CTO · ASEGURADORA · LATAM',
 
-    function setLang(lang) {
-      html.lang = lang;
-      buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-      localStorage.setItem('henkancx_lang', lang);
-      document.title = lang === 'es'
-        ? 'HenkanCX — Reimaginando la experiencia del cliente'
-        : 'HenkanCX — Reimagining customer experience';
+    'manifesto.eyebrow': 'POR QUÉ EXISTIMOS',
+    'manifesto.title.l1': 'Las empresas latinoamericanas se ahogan',
+    'manifesto.title.l2': 'en tickets y procesos manuales.',
+    'manifesto.p1': 'Mientras eso pasa, la <strong>estrategia se queda en pausa</strong>. Lo vimos repetirse demasiadas veces — equipos brillantes ahogándose en tareas que una máquina podía resolver en segundos.',
+    'manifesto.p2': 'Por eso nacimos: para convertir la automatización y la IA en un <strong>copiloto accesible</strong> que libera a los equipos a hacer lo que sí mueve la aguja. Sin frameworks de moda. Sin promesas vacías. Resultados medibles desde el día 1.',
+    'manifesto.founderQuote': 'No vendemos IA porque sea sexy. La vendemos porque libera el tiempo de tu equipo para hacer cosas que solo los humanos pueden hacer.',
+    'manifesto.founderName': 'George Maytin',
+    'manifesto.founderRole': 'Co-fundador · CTO HenkanCX',
+
+    'solutions.eyebrow': 'SOLUCIONES IA · 06',
+    'solutions.title.l1': 'Seis productos.',
+    'solutions.title.l2': 'Un solo norte: que tus clientes te amen.',
+    'solutions.sub': 'Cada producto es una pieza de tu CX. Combínalos como te haga sentido — o tómalos uno a uno.',
+
+    'sol1.tag': 'Seguros · Computer Vision',
+    'sol1.desc': 'Auto-inspección desde el móvil del cliente. Computer vision que detecta daños y fraudes en segundos. Emisión y renovación de pólizas sin agente intermedio.',
+    'sol1.metric': '<b>95%</b> ↓ tiempos · <b>+70%</b> fraude',
+
+    'sol2.tag': 'Telecom · Field Ops',
+    'sol2.desc': 'Gestión inteligente de inspecciones, órdenes de trabajo e inventario IoT para sitios telecom. Anticipamos fallas antes de que escalen.',
+    'sol2.metric': '<b>99%</b> trazabilidad · <b>60%</b> ↓ reportes',
+
+    'sol3.tag': 'Voice IA · Live',
+    'sol3.name': 'Contact Center IA',
+    'sol3.desc': 'Coach en vivo, análisis de tono dinámico, auditoría 100% automática de cada llamada.',
+    'sol3.metric': '<b>+30%</b> productividad',
+
+    'sol4.tag': 'WhatsApp · API Oficial',
+    'sol4.name': 'Chatbots IA + WhatsApp',
+    'sol4.desc': 'Bots conversacionales entrenados con IA generativa sobre la línea oficial de WhatsApp Business. Integrados a tu CRM, ERP y sistemas core. Atención 24/7 que se siente humana.',
+    'sol4.metric': '<b>24/7</b> atención · <b>CSAT &gt;80%</b>',
+
+    'sol5.tag': 'Deportivo · Federaciones',
+    'sol5.desc': 'Gestión integral para federaciones, clubes y atletas de alto rendimiento. Historial médico, rendimiento y resultados competitivos en un solo lugar.',
+    'sol5.metric': '<b>360°</b> del atleta',
+
+    'sol6.tag': 'Ganadería · IA',
+    'sol6.name': 'Sistema Ganadero IA',
+    'sol6.desc': 'Inventario, vacunación, alimentación, reproducción y salud animal. Ciclo productivo completo del hato bajo control desde tu móvil.',
+    'sol6.metric': '<b>100%</b> trazable',
+
+    'tm.eyebrow': 'VOCES · TESTIMONIOS REALES',
+    'tm.title.l1': 'Lo que dicen quienes',
+    'tm.title.l2': 'ya están dentro.',
+    'tm.sub': 'Por respeto a la confidencialidad de nuestros clientes, mantenemos sus nombres reservados. Pero las historias son reales — y los números también.',
+    'tm.q1': 'No nos vendieron una herramienta. Nos vendieron un copiloto que pensó con nosotros — y entendió nuestro negocio antes de tocar una línea de código.',
+    'tm.r1': 'CTO',
+    'tm.s1': 'ASEGURADORA REGIONAL · LATAM',
+    'tm.q2': 'Pasamos de 14 días a 6 horas en una inspección. El equipo casi llora.',
+    'tm.r2': 'Directora Operaciones',
+    'tm.s2': 'TELECOM · LATAM',
+    'tm.q3': 'El coach de IA en vivo cambió cómo hablamos con los clientes. Ya no se trata solo de cerrar — se trata de escuchar bien.',
+    'tm.r3': 'VP Customer Experience',
+    'tm.s3': 'RETAIL · LATAM',
+
+    'ind.label': 'Implementado en',
+    'ind.industries': '7 industrias',
+    'ind.countries': '5 países LATAM',
+    'ind.insurance': 'Seguros',
+    'ind.telecom': 'Telecom',
+    'ind.retail': 'Retail',
+    'ind.hospitality': 'Hotelería',
+    'ind.automotive': 'Automotriz',
+    'ind.brokers': 'Brokers',
+    'ind.fieldOps': 'Field Ops',
+    'ind.sports': 'Deportivo',
+    'ind.livestock': 'Ganadería',
+    'ind.agribusiness': 'Agroindustria',
+
+    'proc.eyebrow': 'CÓMO TRABAJAMOS · 4 PASOS',
+    'proc.title.l1': 'Del primer hello al ROI:',
+    'proc.title.l2': 'en semanas, no meses.',
+    'proc.sub': 'Nada de procesos eternos ni RFPs de 60 páginas. Diagnosticamos, diseñamos, implementamos y optimizamos — con tu equipo dentro en cada paso.',
+    'proc.s1.step': 'DIAGNÓSTICO',
+    'proc.s1.name': 'Mapeo del journey',
+    'proc.s1.desc': 'Analizamos tu operación actual y los puntos de fricción del customer journey, con métricas de baseline.',
+    'proc.s2.step': 'DISEÑO',
+    'proc.s2.name': 'Estrategia y KPIs',
+    'proc.s2.desc': 'Diseñamos la solución a medida con KPIs de éxito claros y un roadmap de implementación realista.',
+    'proc.s3.step': 'IMPLEMENTACIÓN',
+    'proc.s3.name': 'Despliegue ágil',
+    'proc.s3.desc': 'Implementación por sprints con capacitación al equipo. Resultados visibles desde el día 1.',
+    'proc.s4.step': 'OPTIMIZACIÓN',
+    'proc.s4.name': 'Mejora continua',
+    'proc.s4.desc': 'Tu copiloto IA aprende con cada interacción. Optimización basada en datos reales, no suposiciones.',
+
+    'met.eyebrow': 'RESULTADOS REALES · CASOS EN PRODUCCIÓN',
+    'met.title.l1': 'Métricas que mueven',
+    'met.title.l2': 'la aguja del negocio.',
+    'met.sub': 'No vendemos promesas. Vendemos resultados medibles — desde el primer mes de operación.',
+    'met.l1': 'Reducción de tiempos en inspección de seguros',
+    'met.s1': 'Sector Seguros · LATAM',
+    'met.l2': 'Detección automática de fraude vs. modelo manual',
+    'met.s2': 'Snnapi · Producción',
+    'met.l3': 'Mejora en SLA de operaciones telecom',
+    'met.s3': 'Sector Telecom · LATAM',
+    'met.l4': 'Trazabilidad en órdenes de trabajo en campo',
+    'met.s4': 'Sector Field Ops · LATAM',
+
+    'team.eyebrow': 'EL EQUIPO DETRÁS',
+    'team.title.l1': 'No somos una fábrica de IA.',
+    'team.title.l2': 'Somos un equipo pequeño con criterio.',
+    'team.sub': 'Un equipo cross-funcional con experiencia en seguros, telecom, retail y deporte. Pasamos años dentro de las industrias antes de construirles software. Por eso el software hace sentido.',
+    'team.handnote': 'cuando trabajas con nosotros, hablas con nosotros — no con un account executive',
+    'team.m1.name': 'George Maytin',
+    'team.m1.role': 'Co-fundador · CTO',
+    'team.m1.quote': '"La IA es una herramienta. El criterio es lo que falta."',
+    'team.m2.name': 'Andrea Nava',
+    'team.m2.role': 'Co-fundadora · Head Comercial',
+    'team.m2.quote': '"Cada cliente nuevo es una promesa que cumplimos juntos."',
+    'team.m3.name': 'Equipo de IA + Producto',
+    'team.m3.role': 'Panamá · Costa Rica · Colombia',
+    'team.m3.quote': '"Ingenieros, diseñadores, científicos de datos y especialistas de industria."',
+    'team.m4.name': 'Tu equipo &amp; nosotros',
+    'team.m4.role': 'Trabajamos juntos',
+    'team.m4.quote': '"Nada de outsourcing oscuro. Mismo Slack, mismas reuniones, mismas metas."',
+
+    'cta.pre': '¿conversamos?',
+    'cta.title.l1': 'Una llamada de 30 minutos.',
+    'cta.title.l2': 'Sin venta dura, prometido.',
+    'cta.sub': 'Te mostramos los demos en vivo conectados a casos reales de tu industria. Si hace clic, hablamos de implementación. Si no — al menos te llevas ideas.',
+    'cta.book': 'Agendar llamada (WhatsApp)',
+    'cta.trust': '— Andrea, George y el resto del equipo',
+
+    'footer.tagline': 'Transformamos la experiencia del cliente desde el día 1. Soluciones de IA y automatización para Latinoamérica.',
+    'footer.handnote': 'hecho con cariño en Ciudad de Panamá ☀️',
+    'footer.solutions': 'Soluciones',
+    'footer.cc': 'Contact Center IA',
+    'footer.wa': 'Chatbot WhatsApp',
+    'footer.gan': 'Sistema Ganadero IA',
+    'footer.company': 'Empresa',
+    'footer.team': 'El equipo',
+    'footer.process': 'Cómo trabajamos',
+    'footer.contact': 'Conversemos',
+    'footer.contactH': 'Contacto',
+    'footer.location': 'Ciudad de Panamá, Panamá',
+    'footer.copyright': '© 2026 HenkanCX. Todos los derechos reservados.'
+  },
+  en: {
+    'nav.solutions': 'Solutions',
+    'nav.process': 'Process',
+    'nav.team': 'Team',
+    'nav.talk': "Let's talk",
+
+    'hero.eyebrow': 'HenkanCX · Panama · LATAM',
+    'hero.title.l1': 'We transform',
+    'hero.title.l2': 'the customer experience',
+    'hero.title.l3': 'from day 1.',
+    'hero.sub': "We're an AI and automation copilot for Latin American companies. From smart inspections to contact centers with live coaching. Measurable ROI from the first month — no empty promises.",
+    'hero.cta1': "Let's talk →",
+    'hero.cta2': 'See solutions',
+    'hero.qcard.text': 'Implemented in 3 weeks. ROI in month one.',
+    'hero.qcard.attr': 'CTO · INSURANCE · LATAM',
+
+    'manifesto.eyebrow': 'WHY WE EXIST',
+    'manifesto.title.l1': 'Latin American companies are drowning',
+    'manifesto.title.l2': 'in tickets and manual processes.',
+    'manifesto.p1': "While that happens, <strong>strategy stays on pause</strong>. We saw it happen too many times — brilliant teams drowning in tasks a machine could solve in seconds.",
+    'manifesto.p2': "That's why we exist: to turn AI and automation into an <strong>accessible copilot</strong> that frees teams to do what actually moves the needle. No trendy frameworks. No empty promises. Measurable results from day 1.",
+    'manifesto.founderQuote': "We don't sell AI because it's sexy. We sell it because it frees up your team's time to do things only humans can do.",
+    'manifesto.founderName': 'George Maytin',
+    'manifesto.founderRole': 'Co-founder · CTO HenkanCX',
+
+    'solutions.eyebrow': 'AI SOLUTIONS · 06',
+    'solutions.title.l1': 'Six products.',
+    'solutions.title.l2': 'One north star: customers who love you.',
+    'solutions.sub': 'Each product is a piece of your CX. Combine them as it makes sense — or take them one by one.',
+
+    'sol1.tag': 'Insurance · Computer Vision',
+    'sol1.desc': 'Self-inspection from the customer\'s phone. Computer vision that detects damage and fraud in seconds. Policy issuance and renewal without an intermediary.',
+    'sol1.metric': '<b>95%</b> ↓ time · <b>+70%</b> fraud',
+
+    'sol2.tag': 'Telecom · Field Ops',
+    'sol2.desc': 'Smart management of inspections, work orders and IoT inventory for telecom sites. We anticipate failures before they escalate.',
+    'sol2.metric': '<b>99%</b> traceability · <b>60%</b> ↓ reports',
+
+    'sol3.tag': 'Voice AI · Live',
+    'sol3.name': 'Contact Center AI',
+    'sol3.desc': 'Live coaching, dynamic tone analysis, 100% automatic auditing of every call.',
+    'sol3.metric': '<b>+30%</b> productivity',
+
+    'sol4.tag': 'WhatsApp · Official API',
+    'sol4.name': 'AI Chatbots + WhatsApp',
+    'sol4.desc': 'Conversational bots trained with generative AI on the official WhatsApp Business line. Integrated with your CRM, ERP and core systems. 24/7 service that feels human.',
+    'sol4.metric': '<b>24/7</b> service · <b>CSAT &gt;80%</b>',
+
+    'sol5.tag': 'Sports · Federations',
+    'sol5.desc': 'Comprehensive management for federations, clubs and high-performance athletes. Medical history, performance and competition results in one place.',
+    'sol5.metric': '<b>360°</b> athlete view',
+
+    'sol6.tag': 'Livestock · AI',
+    'sol6.name': 'Livestock AI System',
+    'sol6.desc': 'Inventory, vaccination, feeding, reproduction and animal health. Complete production cycle of the herd under control from your phone.',
+    'sol6.metric': '<b>100%</b> traceable',
+
+    'tm.eyebrow': 'VOICES · REAL TESTIMONIALS',
+    'tm.title.l1': 'What people who are',
+    'tm.title.l2': 'already in say.',
+    'tm.sub': "Out of respect for our clients' confidentiality, we keep their names reserved. But the stories are real — and so are the numbers.",
+    'tm.q1': "They didn't sell us a tool. They sold us a copilot that thought with us — and understood our business before touching a line of code.",
+    'tm.r1': 'CTO',
+    'tm.s1': 'REGIONAL INSURANCE · LATAM',
+    'tm.q2': 'We went from 14 days to 6 hours on an inspection. The team almost cried.',
+    'tm.r2': 'Operations Director',
+    'tm.s2': 'TELECOM · LATAM',
+    'tm.q3': "The live AI coach changed how we talk to customers. It's not just about closing anymore — it's about really listening.",
+    'tm.r3': 'VP Customer Experience',
+    'tm.s3': 'RETAIL · LATAM',
+
+    'ind.label': 'Deployed across',
+    'ind.industries': '7 industries',
+    'ind.countries': '5 LATAM countries',
+    'ind.insurance': 'Insurance',
+    'ind.telecom': 'Telecom',
+    'ind.retail': 'Retail',
+    'ind.hospitality': 'Hospitality',
+    'ind.automotive': 'Automotive',
+    'ind.brokers': 'Brokers',
+    'ind.fieldOps': 'Field Ops',
+    'ind.sports': 'Sports',
+    'ind.livestock': 'Livestock',
+    'ind.agribusiness': 'Agribusiness',
+
+    'proc.eyebrow': 'HOW WE WORK · 4 STEPS',
+    'proc.title.l1': 'From first hello to ROI:',
+    'proc.title.l2': 'in weeks, not months.',
+    'proc.sub': 'No endless processes or 60-page RFPs. We diagnose, design, implement and optimize — with your team inside every step.',
+    'proc.s1.step': 'DIAGNOSIS',
+    'proc.s1.name': 'Journey mapping',
+    'proc.s1.desc': 'We analyze your current operations and friction points in the customer journey, with baseline metrics.',
+    'proc.s2.step': 'DESIGN',
+    'proc.s2.name': 'Strategy & KPIs',
+    'proc.s2.desc': 'We design a tailored solution with clear success KPIs and a realistic implementation roadmap.',
+    'proc.s3.step': 'IMPLEMENTATION',
+    'proc.s3.name': 'Agile deployment',
+    'proc.s3.desc': 'Sprint-based implementation with team training. Visible results from day 1.',
+    'proc.s4.step': 'OPTIMIZATION',
+    'proc.s4.name': 'Continuous improvement',
+    'proc.s4.desc': 'Your AI copilot learns with every interaction. Optimization based on real data, not assumptions.',
+
+    'met.eyebrow': 'REAL RESULTS · CASES IN PRODUCTION',
+    'met.title.l1': 'Metrics that move',
+    'met.title.l2': 'the business needle.',
+    'met.sub': "We don't sell promises. We sell measurable results — from the first month of operation.",
+    'met.l1': 'Reduction in insurance inspection time',
+    'met.s1': 'Insurance Sector · LATAM',
+    'met.l2': 'Automatic fraud detection vs. manual model',
+    'met.s2': 'Snnapi · Production',
+    'met.l3': 'Improvement in telecom operations SLA',
+    'met.s3': 'Telecom Sector · LATAM',
+    'met.l4': 'Traceability in field work orders',
+    'met.s4': 'Field Ops Sector · LATAM',
+
+    'team.eyebrow': 'THE TEAM BEHIND',
+    'team.title.l1': "We're not an AI factory.",
+    'team.title.l2': "We're a small team with judgment.",
+    'team.sub': 'A cross-functional team with experience in insurance, telecom, retail and sports. We spent years inside the industries before building software for them. That\'s why the software makes sense.',
+    'team.handnote': 'when you work with us, you talk to us — not to an account executive',
+    'team.m1.name': 'George Maytin',
+    'team.m1.role': 'Co-founder · CTO',
+    'team.m1.quote': '"AI is a tool. Judgment is what\'s missing."',
+    'team.m2.name': 'Andrea Nava',
+    'team.m2.role': 'Co-founder · Head of Sales',
+    'team.m2.quote': '"Every new client is a promise we keep together."',
+    'team.m3.name': 'AI + Product Team',
+    'team.m3.role': 'Panama · Costa Rica · Colombia',
+    'team.m3.quote': '"Engineers, designers, data scientists and industry specialists."',
+    'team.m4.name': 'Your team &amp; us',
+    'team.m4.role': 'We work together',
+    'team.m4.quote': '"No dark outsourcing. Same Slack, same meetings, same goals."',
+
+    'cta.pre': "shall we talk?",
+    'cta.title.l1': 'A 30-minute call.',
+    'cta.title.l2': 'No hard sell, promised.',
+    'cta.sub': "We show you the demos live, connected to real cases in your industry. If it clicks, we talk implementation. If not — at least you walk away with ideas.",
+    'cta.book': 'Schedule call (WhatsApp)',
+    'cta.trust': '— Andrea, George and the rest of the team',
+
+    'footer.tagline': 'Transforming customer experience from day 1. AI and automation solutions for Latin America.',
+    'footer.handnote': 'made with care in Panama City ☀️',
+    'footer.solutions': 'Solutions',
+    'footer.cc': 'Contact Center AI',
+    'footer.wa': 'WhatsApp Chatbot',
+    'footer.gan': 'Livestock AI System',
+    'footer.company': 'Company',
+    'footer.team': 'The team',
+    'footer.process': 'How we work',
+    'footer.contact': "Let's talk",
+    'footer.contactH': 'Contact',
+    'footer.location': 'Panama City, Panama',
+    'footer.copyright': '© 2026 HenkanCX. All rights reserved.'
+  }
+};
+
+function applyLang(lang) {
+  if (!i18n[lang]) lang = 'es';
+  document.documentElement.lang = lang;
+  localStorage.setItem('henkancx_lang', lang);
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = i18n[lang][key];
+    if (val === undefined) return;
+    if (el.hasAttribute('data-i18n-html')) {
+      el.innerHTML = val;
+    } else {
+      el.textContent = val;
     }
-  })();
+  });
 
-  // ============ LIVE CLOCK (Panama time) ============
-  (function() {
-    const el = document.getElementById('clock');
-    function tick() {
-      const now = new Date();
-      const opts = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'America/Panama' };
-      const t = new Intl.DateTimeFormat('en-GB', opts).format(now);
-      el.textContent = `PTY ${t}`;
-    }
-    tick();
-    setInterval(tick, 1000);
-  })();
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
 
-  // ============ PROGRESS COUNTER ============
-  (function() {
-    const target = 62;
-    const el = document.getElementById('pct');
-    let current = 0;
-    const start = performance.now();
-    const dur = 2400;
-    const delay = 600;
-    requestAnimationFrame(function step(now) {
-      const elapsed = now - start - delay;
-      if (elapsed < 0) {
-        el.textContent = '0%';
-        return requestAnimationFrame(step);
-      }
-      const t = Math.min(elapsed / dur, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      current = Math.round(eased * target);
-      el.textContent = current + '%';
-      if (t < 1) requestAnimationFrame(step);
-    });
-  })();
+  document.title = lang === 'es'
+    ? 'HenkanCX — Transformamos la experiencia del cliente desde el día 1'
+    : 'HenkanCX — Transforming customer experience from day 1';
+}
+
+(function initLang() {
+  const stored = localStorage.getItem('henkancx_lang');
+  let lang = stored;
+  if (!lang) {
+    const browser = (navigator.language || 'es').toLowerCase();
+    lang = browser.startsWith('en') ? 'en' : 'es';
+  }
+  applyLang(lang);
+})();
+
+document.querySelectorAll('.lang-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+// ===== LIVE PTY CLOCK =====
+function tickClocks() {
+  const opts = { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/Panama' };
+  const t = new Intl.DateTimeFormat('en-GB', opts).format(new Date());
+  const navClock = document.getElementById('navClock');
+  const footerClock = document.getElementById('footerClock');
+  if (navClock) navClock.textContent = `PTY ${t}`;
+  if (footerClock) footerClock.textContent = `PTY ${t}`;
+}
+tickClocks();
+setInterval(tickClocks, 30000);
 </script>
-
 </body>
 </html>

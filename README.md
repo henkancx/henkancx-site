@@ -1,92 +1,93 @@
-# henkancx-site
+# HenkanCX — Sitio principal
 
-Sitio web oficial de **HenkanCX** — _AI-powered customer experience solutions_.
+Sitio web oficial de **HenkanCX**, copiloto de IA y automatización para Latinoamérica.
 
-> Este repositorio contiene la versión **mockup / sitio en construcción** que se muestra públicamente mientras se desarrolla el rediseño v2.0 del sitio principal.
+🌐 **Live:** [henkancx.com](https://henkancx.com)
 
----
+## Estética
 
-## 🟠 Estado actual
+Single-page editorial dark con paleta del brand book oficial:
 
-**Sitio en construcción / Coming soon page**
+- **Midnight Navy** `#0D1B2A` (background dominante)
+- **Royal Purple** `#833AE0` + **Magenta Pulse** `#CB6CE6` (acentos / gradientes)
+- **Cloud** `#F5F6F8` + **Paper Warm** `#F2F1EE` (secciones intercaladas)
 
-Página estática única (`index.html`) con:
+Tipografías:
 
-- Estética editorial dark con acento tangerine (`#FF6B35`)
-- Tipografía: Fraunces (display) + JetBrains Mono (UI)
-- Toggle bilingüe **ES / EN** con persistencia en `localStorage`
-- Reloj en tiempo real (timezone Panamá)
-- Barra de progreso animada del rediseño
-- Grain texture + vignette para profundidad
-- Responsive (mobile-first)
-- Cumple `prefers-reduced-motion`
+- **Poppins** (display)
+- **Inter** (body)
+- **Fira Code** (datos / mono)
+- **Instrument Serif** (italic editorial accents)
+- **Caveat** (handwritten — para anotaciones humanas)
 
----
+## Toque humano
 
-## 📁 Estructura
+- Reloj vivo de Panamá (`PTY HH:MM`) en nav y footer
+- Pull quotes editoriales gigantes (Instrument Serif italic) por industria
+- Founder note con avatar + firma manuscrita (Caveat)
+- Hand-drawn arrow + post-it note flotante en hero
+- Microcopia cálida en español latino: "Conversemos", "pinky promise 🤝", "hecho con cariño en Ciudad de Panamá ☀️"
+- Avatares del equipo con gradientes magenta/purple
+
+## Estructura
 
 ```
 henkancx-site/
-├── index.html      # Sitio en construcción (single-file, sin dependencias)
+├── index.html      # Sitio completo (single-file)
 ├── .nojekyll       # Desactiva Jekyll en GitHub Pages
-├── CNAME           # (opcional) dominio custom
+├── CNAME           # henkancx.com
+├── .gitignore
 └── README.md
 ```
 
-Sin build step. Sin frameworks. Sin dependencias. Vanilla HTML + CSS + JS.
+Sin build step. Sin frameworks. Sin dependencias externas (solo Google Fonts).
 
----
+## Secciones
 
-## 🚀 Deploy en GitHub Pages
+1. **Nav sticky** con backdrop-blur · logo · links · clock PTY · toggle ES/EN · CTA
+2. **Hero** dark con statement editorial + CTAs + hand-drawn note
+3. **Manifiesto** light con founder card + firma
+4. **Soluciones** dark — bento grid de 6 productos
+5. **Voces** light — testimonios anónimos por rol/industria estilo editorial
+6. **Industrias** dark slim — marquee de sectores
+7. **Cómo trabajamos** light — proceso 4 pasos
+8. **Resultados** dark — 4 métricas headline
+9. **El equipo detrás** light warm — 4 cards humanos
+10. **CTA final** dark — "conversamos?"
+11. **Footer** dark — links + clock + sociales + "hecho con cariño en Panamá"
+
+## i18n
+
+- Default: ES (auto-detect navegador, fallback ES)
+- Toggle ES/EN en nav, persistente con `localStorage` (key: `henkancx_lang`)
+- Cubre 130+ strings — toda la UI, copy editorial y testimonios
+
+## Deploy en GitHub Pages
 
 1. **Settings → Pages**
-2. **Source**: Deploy from a branch
-3. **Branch**: `main` / root (`/`)
-4. (Opcional) **Custom domain**: `henkancx.com` o `coming.henkancx.com`
+2. **Source:** Deploy from a branch
+3. **Branch:** `main` / root (`/`)
+4. **Custom domain:** `henkancx.com` (lee del CNAME)
+5. **Enforce HTTPS:** ✓
 
-Una vez activado, el sitio queda disponible en:
-
+DNS:
 ```
-https://henkancx.github.io/henkancx-site/
-```
+Tipo:   A (apex)
+Nombre: @
+Valor:  185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
 
-O en el dominio custom configurado en el archivo `CNAME`.
-
----
-
-## 🛠️ Desarrollo local
-
-No necesita servidor — abre `index.html` directamente en el navegador.
-
-Para evitar problemas de CORS con fonts en algunos navegadores:
-
-```bash
-# Python 3
-python3 -m http.server 8080
-
-# Node
-npx serve .
+Tipo:   CNAME
+Nombre: www
+Valor:  henkancx.github.io
 ```
 
-Luego visita `http://localhost:8080`.
-
----
-
-## 🎨 Logo
-
-> **Pendiente:** subir el archivo `logo-henkancx.png` (o `.svg`) al directorio raíz para reemplazar el wordmark inline actual.
-
-El sitio en construcción usa por ahora un wordmark tipográfico (`henkan / cx`) construido con Fraunces. Cuando se suba el asset oficial, basta con reemplazar el bloque `.brand` en `index.html`.
-
----
-
-## 📞 Contacto
+## Contacto
 
 - **Email:** [info@henkancx.com](mailto:info@henkancx.com)
 - **WhatsApp:** [+507 6467 1392](https://wa.me/50764671392)
 - **LinkedIn:** [linkedin.com/company/henkancx](https://linkedin.com/company/henkancx)
-- **Instagram:** [@henkancx](https://instagram.com/henkancx)
+- **Demo Portal:** [demo.henkancx.com](https://demo.henkancx.com)
 
 ---
 
-© 2026 HenkanCX · Panamá
+© 2026 HenkanCX · Hecho con cariño en Ciudad de Panamá ☀️
