@@ -139,9 +139,43 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.nav-brand img {
-  height: 42px; width: auto;
-  filter: brightness(0) invert(1);
+
+/* === Built-in logo (CSS only, brand-book accurate) === */
+.logo-mark {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy) 49.5%, var(--magenta) 50.5%, var(--magenta) 100%);
+  position: relative;
+  flex-shrink: 0;
+  display: inline-block;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+}
+.logo-mark::before {
+  content: '';
+  position: absolute;
+  width: 19px; height: 19px;
+  top: 10px; left: 10px;
+  border: 2.4px solid white;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotate(45deg);
+}
+.logo-mark::after {
+  content: '';
+  position: absolute;
+  width: 6px; height: 6px;
+  background: white;
+  border-radius: 50%;
+  top: 13px; right: 8px;
+}
+.logo-word {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: white;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a {
@@ -1099,7 +1133,21 @@ h1.hero-title .accent {
   padding-bottom: 56px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-.footer-brand img { height: 44px; width: auto; margin-bottom: 22px; filter: brightness(0) invert(1); }
+.footer-brand .footer-brand-row {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px;
+}
+.footer-brand .logo-mark { width: 46px; height: 46px; }
+.footer-brand .logo-mark::before {
+  width: 22px; height: 22px;
+  top: 11px; left: 11px;
+  border-width: 2.6px;
+}
+.footer-brand .logo-mark::after {
+  width: 7px; height: 7px;
+  top: 15px; right: 9px;
+}
+.footer-brand .logo-word { font-size: 26px; }
 .footer-brand p { font-size: 14px; line-height: 1.6; max-width: 320px; }
 .footer-handnote {
   font-family: 'Caveat', cursive;
@@ -1182,7 +1230,8 @@ h1.hero-title .accent {
 <!-- ===== NAV ===== -->
 <nav class="nav">
   <a href="/" class="nav-brand">
-    <img src="https://www.henkancx.com/logo-henkancx.png" alt="HenkanCX">
+    <span class="logo-mark"></span>
+    <span class="logo-word">henkancx</span>
   </a>
   <div class="nav-links">
     <a href="#solutions" data-i18n="nav.solutions">Soluciones</a>
@@ -1305,13 +1354,12 @@ h1.hero-title .accent {
     <div class="founder-card">
       <p class="founder-quote" data-i18n="manifesto.founderQuote">No vendemos IA porque sea sexy. La vendemos porque libera el tiempo de tu equipo para hacer cosas que solo los humanos pueden hacer.</p>
       <div class="founder-attr">
-        <div class="founder-avatar">G</div>
+        <div class="founder-avatar">✦</div>
         <div class="founder-info">
-          <div class="name" data-i18n="manifesto.founderName">George Maytin</div>
-          <div class="role" data-i18n="manifesto.founderRole">Co-fundador · CTO HenkanCX</div>
+          <div class="name" data-i18n="manifesto.founderName">Voz fundadora</div>
+          <div class="role" data-i18n="manifesto.founderRole">Co-fundación · CTO HenkanCX</div>
         </div>
       </div>
-      <span class="founder-signature">— George ✦</span>
     </div>
   </div>
 </section>
@@ -1621,16 +1669,16 @@ h1.hero-title .accent {
 
     <div class="team-grid">
       <div class="team-card featured">
-        <div class="team-avatar g1">G</div>
-        <div class="team-name" data-i18n="team.m1.name">George Maytin</div>
-        <div class="team-role" data-i18n="team.m1.role">Co-fundador · CTO</div>
+        <div class="team-avatar g1">✦</div>
+        <div class="team-name" data-i18n="team.m1.name">Liderazgo Técnico</div>
+        <div class="team-role" data-i18n="team.m1.role">Co-fundación · CTO</div>
         <p class="team-quote" data-i18n="team.m1.quote">"La IA es una herramienta. El criterio es lo que falta."</p>
       </div>
 
       <div class="team-card">
-        <div class="team-avatar g2">A</div>
-        <div class="team-name" data-i18n="team.m2.name">Andrea Nava</div>
-        <div class="team-role" data-i18n="team.m2.role">Co-fundadora · Head Comercial</div>
+        <div class="team-avatar g2">◆</div>
+        <div class="team-name" data-i18n="team.m2.name">Liderazgo Comercial</div>
+        <div class="team-role" data-i18n="team.m2.role">Co-fundación · Head Comercial</div>
         <p class="team-quote" data-i18n="team.m2.quote">"Cada cliente nuevo es una promesa que cumplimos juntos."</p>
       </div>
 
@@ -1664,7 +1712,7 @@ h1.hero-title .accent {
       <a href="https://wa.me/50764671392?text=¡Hola%21%20me%20gustaría%20agendar%20una%20llamada" target="_blank" rel="noopener" class="btn btn-mag btn-large" data-i18n="cta.book">Agendar llamada (WhatsApp)</a>
       <a href="mailto:info@henkancx.com" class="btn btn-outline-light btn-large">info@henkancx.com</a>
     </div>
-    <div class="cta-trust" data-i18n="cta.trust">— Andrea, George y el resto del equipo</div>
+    <div class="cta-trust" data-i18n="cta.trust">— El equipo de HenkanCX</div>
   </div>
 </section>
 
@@ -1673,7 +1721,10 @@ h1.hero-title .accent {
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="https://www.henkancx.com/logo-henkancx.png" alt="HenkanCX">
+        <div class="footer-brand-row">
+          <span class="logo-mark"></span>
+          <span class="logo-word">henkancx</span>
+        </div>
         <p data-i18n="footer.tagline">Transformamos la experiencia del cliente desde el día 1. Soluciones de IA y automatización para Latinoamérica.</p>
         <span class="footer-handnote" data-i18n="footer.handnote">hecho con cariño en Ciudad de Panamá ☀️</span>
       </div>
@@ -1738,8 +1789,8 @@ const i18n = {
     'manifesto.p1': 'Mientras eso pasa, la <strong>estrategia se queda en pausa</strong>. Lo vimos repetirse demasiadas veces — equipos brillantes ahogándose en tareas que una máquina podía resolver en segundos.',
     'manifesto.p2': 'Por eso nacimos: para convertir la automatización y la IA en un <strong>copiloto accesible</strong> que libera a los equipos a hacer lo que sí mueve la aguja. Sin frameworks de moda. Sin promesas vacías. Resultados medibles desde el día 1.',
     'manifesto.founderQuote': 'No vendemos IA porque sea sexy. La vendemos porque libera el tiempo de tu equipo para hacer cosas que solo los humanos pueden hacer.',
-    'manifesto.founderName': 'George Maytin',
-    'manifesto.founderRole': 'Co-fundador · CTO HenkanCX',
+    'manifesto.founderName': 'Voz fundadora',
+    'manifesto.founderRole': 'Co-fundación · CTO HenkanCX',
 
     'solutions.eyebrow': 'SOLUCIONES IA · 06',
     'solutions.title.l1': 'Seis productos.',
@@ -1836,11 +1887,11 @@ const i18n = {
     'team.title.l2': 'Somos un equipo pequeño con criterio.',
     'team.sub': 'Un equipo cross-funcional con experiencia en seguros, telecom, retail y deporte. Pasamos años dentro de las industrias antes de construirles software. Por eso el software hace sentido.',
     'team.handnote': 'cuando trabajas con nosotros, hablas con nosotros — no con un account executive',
-    'team.m1.name': 'George Maytin',
-    'team.m1.role': 'Co-fundador · CTO',
+    'team.m1.name': 'Liderazgo Técnico',
+    'team.m1.role': 'Co-fundación · CTO',
     'team.m1.quote': '"La IA es una herramienta. El criterio es lo que falta."',
-    'team.m2.name': 'Andrea Nava',
-    'team.m2.role': 'Co-fundadora · Head Comercial',
+    'team.m2.name': 'Liderazgo Comercial',
+    'team.m2.role': 'Co-fundación · Head Comercial',
     'team.m2.quote': '"Cada cliente nuevo es una promesa que cumplimos juntos."',
     'team.m3.name': 'Equipo de IA + Producto',
     'team.m3.role': 'Panamá · Costa Rica · Colombia',
@@ -1854,7 +1905,7 @@ const i18n = {
     'cta.title.l2': 'Sin venta dura, prometido.',
     'cta.sub': 'Te mostramos los demos en vivo conectados a casos reales de tu industria. Si hace clic, hablamos de implementación. Si no — al menos te llevas ideas.',
     'cta.book': 'Agendar llamada (WhatsApp)',
-    'cta.trust': '— Andrea, George y el resto del equipo',
+    'cta.trust': '— El equipo de HenkanCX',
 
     'footer.tagline': 'Transformamos la experiencia del cliente desde el día 1. Soluciones de IA y automatización para Latinoamérica.',
     'footer.handnote': 'hecho con cariño en Ciudad de Panamá ☀️',
@@ -1892,7 +1943,7 @@ const i18n = {
     'manifesto.p1': "While that happens, <strong>strategy stays on pause</strong>. We saw it happen too many times — brilliant teams drowning in tasks a machine could solve in seconds.",
     'manifesto.p2': "That's why we exist: to turn AI and automation into an <strong>accessible copilot</strong> that frees teams to do what actually moves the needle. No trendy frameworks. No empty promises. Measurable results from day 1.",
     'manifesto.founderQuote': "We don't sell AI because it's sexy. We sell it because it frees up your team's time to do things only humans can do.",
-    'manifesto.founderName': 'George Maytin',
+    'manifesto.founderName': 'Founder voice',
     'manifesto.founderRole': 'Co-founder · CTO HenkanCX',
 
     'solutions.eyebrow': 'AI SOLUTIONS · 06',
@@ -1990,10 +2041,10 @@ const i18n = {
     'team.title.l2': "We're a small team with judgment.",
     'team.sub': 'A cross-functional team with experience in insurance, telecom, retail and sports. We spent years inside the industries before building software for them. That\'s why the software makes sense.',
     'team.handnote': 'when you work with us, you talk to us — not to an account executive',
-    'team.m1.name': 'George Maytin',
+    'team.m1.name': 'Technical Leadership',
     'team.m1.role': 'Co-founder · CTO',
     'team.m1.quote': '"AI is a tool. Judgment is what\'s missing."',
-    'team.m2.name': 'Andrea Nava',
+    'team.m2.name': 'Commercial Leadership',
     'team.m2.role': 'Co-founder · Head of Sales',
     'team.m2.quote': '"Every new client is a promise we keep together."',
     'team.m3.name': 'AI + Product Team',
@@ -2008,7 +2059,7 @@ const i18n = {
     'cta.title.l2': 'No hard sell, promised.',
     'cta.sub': "We show you the demos live, connected to real cases in your industry. If it clicks, we talk implementation. If not — at least you walk away with ideas.",
     'cta.book': 'Schedule call (WhatsApp)',
-    'cta.trust': '— Andrea, George and the rest of the team',
+    'cta.trust': '— The HenkanCX team',
 
     'footer.tagline': 'Transforming customer experience from day 1. AI and automation solutions for Latin America.',
     'footer.handnote': 'made with care in Panama City ☀️',
