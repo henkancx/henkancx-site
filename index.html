@@ -140,34 +140,12 @@ body {
 }
 .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 
-/* === Built-in logo (CSS only, brand-book accurate) === */
+/* === Logo (PNG with transparent background) === */
 .logo-mark {
   width: 40px; height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy) 49.5%, var(--magenta) 50.5%, var(--magenta) 100%);
-  position: relative;
   flex-shrink: 0;
   display: inline-block;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
-}
-.logo-mark::before {
-  content: '';
-  position: absolute;
-  width: 19px; height: 19px;
-  top: 10px; left: 10px;
-  border: 2.4px solid white;
-  border-radius: 50%;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  transform: rotate(45deg);
-}
-.logo-mark::after {
-  content: '';
-  position: absolute;
-  width: 6px; height: 6px;
-  background: white;
-  border-radius: 50%;
-  top: 13px; right: 8px;
+  object-fit: contain;
 }
 .logo-word {
   font-family: 'Poppins', sans-serif;
@@ -1138,15 +1116,6 @@ h1.hero-title .accent {
   margin-bottom: 24px;
 }
 .footer-brand .logo-mark { width: 46px; height: 46px; }
-.footer-brand .logo-mark::before {
-  width: 22px; height: 22px;
-  top: 11px; left: 11px;
-  border-width: 2.6px;
-}
-.footer-brand .logo-mark::after {
-  width: 7px; height: 7px;
-  top: 15px; right: 9px;
-}
 .footer-brand .logo-word { font-size: 26px; }
 .footer-brand p { font-size: 14px; line-height: 1.6; max-width: 320px; }
 .footer-handnote {
@@ -1230,7 +1199,7 @@ h1.hero-title .accent {
 <!-- ===== NAV ===== -->
 <nav class="nav">
   <a href="/" class="nav-brand">
-    <span class="logo-mark"></span>
+    <img class="logo-mark" src="/logo-henkan.png" alt="HenkanCX">
     <span class="logo-word">henkancx</span>
   </a>
   <div class="nav-links">
@@ -1702,14 +1671,14 @@ h1.hero-title .accent {
 <!-- ===== CTA ===== -->
 <section class="cta-section dark" id="contact">
   <div class="cta-inner">
-    <span class="cta-pre" data-i18n="cta.pre">¿conversamos?</span>
+    <span class="cta-pre" data-i18n="cta.pre">el ROI que no medimos</span>
     <h2 class="cta-title">
-      <span data-i18n="cta.title.l1">Una llamada de 30 minutos.</span><br>
-      <span class="accent" data-i18n="cta.title.l2">Sin venta dura, prometido.</span>
+      <span data-i18n="cta.title.l1">Treinta minutos que pueden devolverte</span><br>
+      <span class="accent" data-i18n="cta.title.l2">calidad de vida.</span>
     </h2>
-    <p class="cta-sub" data-i18n="cta.sub">Te mostramos los demos en vivo conectados a casos reales de tu industria. Si hace clic, hablamos de implementación. Si no — al menos te llevas ideas.</p>
+    <p class="cta-sub" data-i18n="cta.sub">No vendemos solo eficiencia. Vendemos noches sin alarmas, fines de semana completos, equipos que respiran. Cuéntanos qué te roba el sueño — y te decimos si la IA puede ayudar.</p>
     <div class="cta-actions">
-      <a href="https://wa.me/50764671392?text=¡Hola%21%20me%20gustaría%20agendar%20una%20llamada" target="_blank" rel="noopener" class="btn btn-mag btn-large" data-i18n="cta.book">Agendar llamada (WhatsApp)</a>
+      <a href="https://wa.me/50764671392?text=¡Hola%21%20me%20gustaría%20agendar%20una%20llamada" target="_blank" rel="noopener" class="btn btn-mag btn-large" data-i18n="cta.book">Agendar 30 minutos</a>
       <a href="mailto:info@henkancx.com" class="btn btn-outline-light btn-large">info@henkancx.com</a>
     </div>
     <div class="cta-trust" data-i18n="cta.trust">— El equipo de HenkanCX</div>
@@ -1722,7 +1691,7 @@ h1.hero-title .accent {
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-brand-row">
-          <span class="logo-mark"></span>
+          <img class="logo-mark" src="/logo-henkan.png" alt="HenkanCX">
           <span class="logo-word">henkancx</span>
         </div>
         <p data-i18n="footer.tagline">Transformamos la experiencia del cliente desde el día 1. Soluciones de IA y automatización para Latinoamérica.</p>
@@ -1900,11 +1869,11 @@ const i18n = {
     'team.m4.role': 'Trabajamos juntos',
     'team.m4.quote': '"Nada de outsourcing oscuro. Mismo Slack, mismas reuniones, mismas metas."',
 
-    'cta.pre': '¿conversamos?',
-    'cta.title.l1': 'Una llamada de 30 minutos.',
-    'cta.title.l2': 'Sin venta dura, prometido.',
-    'cta.sub': 'Te mostramos los demos en vivo conectados a casos reales de tu industria. Si hace clic, hablamos de implementación. Si no — al menos te llevas ideas.',
-    'cta.book': 'Agendar llamada (WhatsApp)',
+    'cta.pre': 'el ROI que no medimos',
+    'cta.title.l1': 'Treinta minutos que pueden devolverte',
+    'cta.title.l2': 'calidad de vida.',
+    'cta.sub': 'No vendemos solo eficiencia. Vendemos noches sin alarmas, fines de semana completos, equipos que respiran. Cuéntanos qué te roba el sueño — y te decimos si la IA puede ayudar.',
+    'cta.book': 'Agendar 30 minutos',
     'cta.trust': '— El equipo de HenkanCX',
 
     'footer.tagline': 'Transformamos la experiencia del cliente desde el día 1. Soluciones de IA y automatización para Latinoamérica.',
@@ -2054,11 +2023,11 @@ const i18n = {
     'team.m4.role': 'We work together',
     'team.m4.quote': '"No dark outsourcing. Same Slack, same meetings, same goals."',
 
-    'cta.pre': "shall we talk?",
-    'cta.title.l1': 'A 30-minute call.',
-    'cta.title.l2': 'No hard sell, promised.',
-    'cta.sub': "We show you the demos live, connected to real cases in your industry. If it clicks, we talk implementation. If not — at least you walk away with ideas.",
-    'cta.book': 'Schedule call (WhatsApp)',
+    'cta.pre': "the ROI we don't measure",
+    'cta.title.l1': 'Thirty minutes that can give you back',
+    'cta.title.l2': 'quality of life.',
+    'cta.sub': "We don't just sell efficiency. We sell nights without alarms, real weekends, teams that breathe. Tell us what's keeping you up at night — and we'll tell you if AI can help.",
+    'cta.book': 'Schedule 30 minutes',
     'cta.trust': '— The HenkanCX team',
 
     'footer.tagline': 'Transforming customer experience from day 1. AI and automation solutions for Latin America.',
